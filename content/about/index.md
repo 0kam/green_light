@@ -11,3 +11,6 @@ draft: false
 So we beat on, boats against the current, borne back ceaselessly into the past."
 
 *The Great Gatsby*  By F. Scott Fitzgerald
+
+## Another blog
+[日々の記録や読書録](https://rain-wanderer.netlify.app/)
