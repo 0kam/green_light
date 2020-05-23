@@ -1,0 +1,41 @@
+baseURL = "https://example.com"
+languageCode = "jp"
+title = "green light"
+theme="archie"
+copyright = "© okamoto"
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+staticDir = ["static", "static/images"]
+hasCJKLanguage = true # 日本語・中国語・韓国語の単語カウントを有効にする
+summaryLength = 120 # サマリーの長さを120単語にする
+
+[params]
+	mode="auto"
+	featherIconsCDN=true
+	subtitle = "okamoto's tech blog"
+
+[[params.social]]
+name = "Facebook"
+icon = "facebook"
+url = "https://www.facebook.com/profile.php?id=100010006816605"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
