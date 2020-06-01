@@ -4,7 +4,7 @@ date: 2020-06-01T12:06:46+09:00
 draft: false
 ---
 ## はじめに
-Word2VecやVAEを使ったテキスト潜在意味空間について興味を持ち始めました。 
+Word2VecやVAEを使ったテキスト潜在意味空間構築について興味を持ち始めました。 
 
 ここでは手始めにRのWebスクレイピングパッケージ[rvest](https://rvest.tidyverse.org/)を使って青空文庫のテキストを、著者ごとに一気にダウンロードし、ルビの削除などの下処理をします。 
 
@@ -75,6 +75,7 @@ get_aozora_titles <- function(index_url) {
 }
 
 # ZIPをダウンロードし、ルビを削除、テキストでNORUBYディレクトリに保存
+# urlはZIPファイルのURL
 # http://rmecab.jp/wiki/index.php?RMeCabFunctions
 aozora <- function(url = NULL, txtname  = NULL){
   enc <-  switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
@@ -137,6 +138,9 @@ if(0) {
   # 尾形亀之助の例
   kamenosuke <- "https://www.aozora.gr.jp/index_pages/person874.html#sakuhin_list_1"
   aozora_all(kamenosuke)
+  # 『色ガラスの街』の例
+  irogarasu <- "https://www.aozora.gr.jp/cards/000874/files/3213_ruby.zip" 
+  aozora(irogarasu)
 }
 
 ```
