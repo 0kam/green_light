@@ -4,7 +4,7 @@ date: 2021-03-07T19:09:30+09:00
 draft: false
 ---
 ## About Me
-![](/images/face.jpg)
+<img src="/images/face.jpg" width="150">
 
 岡本遼太郎  
 no man's landの大学院生。登山と小説と近代詩が好き。
@@ -14,7 +14,7 @@ no man's landの大学院生。登山と小説と近代詩が好き。
 - 2020年3月       筑波大学生物学類卒業  
 - 2020年4月〜現在 筑波大学大学院生物学学位プログラム博士前期課程  
 - 2020年4月〜現在 国立環境研究所生物多様性保全計画研究室 リサーチ・アシスタント  
-- 
+
 ### Research Interests
 *"山岳域を題材とした、リモートセンシングによる、データ駆動生態学"*
 
@@ -27,7 +27,7 @@ no man's landの大学院生。登山と小説と近代詩が好き。
 ### Awards
 - 2019年12月 山岳科学学術集会@筑波大学 最優秀ポスター発表賞  
 - 2020年11月 雪氷研究大会@オンライン 口頭発表部門 学生最優秀発表賞  
-- 
+
 ## About the title
 "Gatsby believed in the green light, the orgastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. And one fine morning——
 So we beat on, boats against the current, borne back ceaselessly into the past."
