@@ -25,6 +25,7 @@ mathjax: true
 
 ## カメラモデル
 `alproj`は[OpenCV](https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html)とほぼ同じカメラモデルを採用していますが、歪み係数を少しだけ変えています。
+
 - OpenCV
 $$ \begin{bmatrix} x'' \\\\ y'' \end{bmatrix} = \begin{bmatrix} x' \frac{1 + k_1 r^2 + k_2 r^4 + k_3 r^6}{1 + k_4 r^2 + k_5 r^4 + k_6 r^6} + 2 p_1 x' y' + p_2(r^2 + 2 x'^2) + s_1 r^2 + s_2 r^4 \\\\ y' \frac{1 + k_1 r^2 + k_2 r^4 + k_3 r^6}{1 + k_4 r^2 + k_5 r^4 + k_6 r^6} + p_1 (r^2 + 2 y'^2) + 2 p_2 x' y' + s_3 r^2 + s_4 r^4 \\ \end{bmatrix} $$
 - alproj
@@ -67,13 +68,14 @@ pip install git+https://github.com/0kam/alproj
 ![](/images/ttym_2016.jpg)
 
 ### 事前に必要なデータ
-`alproj`での作業を始める前に、以下のデータを用意する必要があります。
+`alproj`での作業を始める前に、以下のデータを用意する必要があります。  
 
 - オルソ済み航空写真  
-  ![](/images/alproj/airborne.png)  
+  ![](/images/alproj/airborne.png)    
 
-- 数値表層モデル（Digital Surface Model, DSM）  
+- 数値表層モデル（Digital Surface Model, DSM）    
   ![](/images/alproj/dem.png)  
+
 
 航空写真とDSMは
 - ターゲット写真が写している領域をカバーし
@@ -94,7 +96,8 @@ import rasterio
 ```
 
 ### ①点群データベースの作成
-まずはじめに、航空写真とDSMを用いて、当該山域の景観をCGで再現するための点群データベースを作成します。
+まずはじめに、航空写真とDSMを用いて、当該山域の景観をCGで再現するための点群データベースを作成します。  
+
 ```python
 res = 1.0 # 点群の平面解像度（m）
 aerial = rasterio.open("airborne.tif") # 航空写真 例では40cm解像度のものを使いました。
@@ -102,9 +105,11 @@ dsm = rasterio.open("dsm.tif") # DSMここでは国土地理院のDEM5mを使っ
 out_path = "pointcloud.db" # 作成されるデータベースのパス
 
 create_db(aerial, dsm, out_path) # 数分程度かかる場合があります。
-```
-これによって、以下の二つの要素を持ったSQLiteデータベースが作成されます。
-- vertices 点群の頂点データ
+```  
+
+これによって、以下の二つの要素を持ったSQLiteデータベースが作成されます。  
+
+- vertices 点群の頂点データ  
 ```
 # x, y, zは頂点の座標、r, g, bは頂点の色を表します。
 
@@ -112,8 +117,9 @@ id x               y               z               r   g   b
 0  7.34942032e+05, 2.54030493e+03, 4.05319697e+06, 96, 91, 82 
 1       ...             ...              ...           ...
 ...
-```
-- indices 頂点のインデックス
+```  
+
+- indices 頂点のインデックス  
 ```
 # それぞれの行はどの三つの頂点が一つの三角形を成すかを表します。
 # 例えば一行目は、verticesの0, 3, 4行目の点が三角形を構成することを示しています。
@@ -124,6 +130,7 @@ v1       v2       v2
         ...   
 7877845  7878552  7877846
 ```
+
 ### ②カメラパラメータの初期値の設定
 カメラパラメータを推定するために、初期値を設定します。
 - x, y, z  
@@ -158,9 +165,9 @@ chunksize = 1000000
 
 vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minutes.
 ```
-以下のようなnp.arrayが得られます。
+
+以下のようなnp.arrayが得られます。  
 - vert  
-  
   頂点の地理座標。X, Z, Yの順番。
   ```
   >>> vert
@@ -172,8 +179,8 @@ vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minut
        [7.34175032e+05, 2.15659692e+03, 4.04854197e+06],
        [7.34176032e+05, 2.15609204e+03, 4.04854197e+06]])
   ```
+
 - col  
-  
   0〜1で表された各頂点の色。
   ```
   >>> col
@@ -185,8 +192,8 @@ vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minut
        [0.        , 0.        , 0.        ],
        [0.        , 0.        , 0.        ]])
   ```
-- ind
-  
+
+- ind  
   どの三つの頂点が一つの三角形を成すかを示すインデックス。
   ```
   >>> ind
@@ -197,7 +204,8 @@ vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minut
        [7877844, 7878551, 7877845],
        [7877845, 7878551, 7878552],
        [7877845, 7878552, 7877846]], dtype=int64)
-    ```
+  ```  
+
 次に、シミュレーション画像をレンダリングします。
 
 ```python
