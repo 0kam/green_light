@@ -70,10 +70,12 @@ pip install git+https://github.com/0kam/alproj
 ### 事前に必要なデータ
 `alproj`での作業を始める前に、以下のデータを用意する必要があります。  
 
-- オルソ済み航空写真  
+- オルソ済み航空写真
+  
   ![](/images/alproj/airborne.png)    
 
-- 数値表層モデル（Digital Surface Model, DSM）    
+- 数値表層モデル（Digital Surface Model, DSM） 
+  
   ![](/images/alproj/dem.png)  
 
 
@@ -109,27 +111,25 @@ create_db(aerial, dsm, out_path) # 数分程度かかる場合があります。
 
 これによって、以下の二つの要素を持ったSQLiteデータベースが作成されます。  
 
-- vertices 点群の頂点データ  
-```
-# x, y, zは頂点の座標、r, g, bは頂点の色を表します。
-
-id x               y               z               r   g   b
-0  7.34942032e+05, 2.54030493e+03, 4.05319697e+06, 96, 91, 82 
-1       ...             ...              ...           ...
-...
-```  
+- vertices 点群の頂点データ
+  ```
+  # x, y, zは頂点の座標、r, g, bは頂点の色を表します。
+  id x               y               z               r   g   b
+  0  7.34942032e+05, 2.54030493e+03, 4.05319697e+06, 96, 91, 82 
+  1       ...             ...              ...           ...
+  ...
+  ```  
 
 - indices 頂点のインデックス  
-```
-# それぞれの行はどの三つの頂点が一つの三角形を成すかを表します。
-# 例えば一行目は、verticesの0, 3, 4行目の点が三角形を構成することを示しています。
-
-v1       v2       v2
-0        3        4
-0        4        1
-        ...   
-7877845  7878552  7877846
-```
+  ```
+  # それぞれの行はどの三つの頂点が一つの三角形を成すかを表します。
+  # 例えば一行目は、verticesの0, 3, 4行目の点が三角形を構成することを示しています。
+  v1       v2       v2
+  0        3        4
+  0        4        1
+          ...   
+  7877845  7878552  7877846
+  ```
 
 ### ②カメラパラメータの初期値の設定
 カメラパラメータを推定するために、初期値を設定します。
@@ -166,8 +166,10 @@ chunksize = 1000000
 vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minutes.
 ```
 
-以下のようなnp.arrayが得られます。  
-- vert  
+以下のようなnp.arrayが得られます。
+
+- vert
+  
   頂点の地理座標。X, Z, Yの順番。
   ```
   >>> vert
@@ -180,7 +182,8 @@ vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minut
        [7.34176032e+05, 2.15609204e+03, 4.04854197e+06]])
   ```
 
-- col  
+- col
+  
   0〜1で表された各頂点の色。
   ```
   >>> col
@@ -193,7 +196,8 @@ vert, col, ind = crop(conn, params, distance, chunksize) # This takes some minut
        [0.        , 0.        , 0.        ]])
   ```
 
-- ind  
+- ind
+  
   どの三つの頂点が一つの三角形を成すかを示すインデックス。
   ```
   >>> ind
@@ -376,8 +380,6 @@ ggplot() +
 # Saving raster data as a GeoTiff file.
 write_stars(raster, "ortholike.tif")
 ```
-
-Result Plot  
 <img src="/images/alproj/ortholike.png" width="500">
 
 ## 高山生態学、雪氷学への応用
