@@ -1,14 +1,3 @@
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
- MathJax.Hub.Config({
- tex2jax: {
- inlineMath: [['$', '$'] ],
- displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
- }
- });
-</script>
-
 # 山岳風景写真地理情報化パッケージ`alproj`の使い方
 ## `alproj`の概要
 `alproj`は山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。
@@ -72,10 +61,13 @@ pip install git+https://github.com/0kam/alproj
 
 ### 事前に必要なデータ
 `alproj`での作業を始める前に、以下のデータを用意する必要があります。
-- オルソ済み航空写真
-  ![](/images/alproj/airborne.png)
-- 数値表層モデル（Digital Surface Model, DSM）
-  ![](/images/alproj/dem.png)
+
+- オルソ済み航空写真  
+  ![](/images/alproj/airborne.png)  
+
+- 数値表層モデル（Digital Surface Model, DSM）  
+  ![](/images/alproj/dem.png)  
+
 航空写真とDSMは
 - ターゲット写真が写している領域をカバーし
 - 同じ平面座標系（UTM座標系や平面直角座標系）に変換してある  
