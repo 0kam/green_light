@@ -14,6 +14,7 @@ summaryLength = 120 # サマリーの長さを120単語にする
 	mode="auto"
 	featherIconsCDN=true
 	subtitle = "okamoto's tech blog"
+    mathjaxStyle = "mathjax-style.css"
 
 [[params.social]]
 name = "Facebook"

@@ -3,6 +3,7 @@ title: "山岳風景写真地理情報化パッケージ`alproj`の使い方"
 date: 2021-03-08T14:57:38+09:00
 draft: false
 tags: [山岳, コンピュータビジョン, GIS, 生態学]
+mathjax: true
 ---
 
 ## `alproj`の概要
