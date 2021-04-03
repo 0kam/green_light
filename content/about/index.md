@@ -6,8 +6,7 @@ draft: false
 ## About Me
 <img src="/images/face.jpg" width="150">
 
-岡本遼太郎  
-no man's landの大学院生。登山と小説と近代詩が好き。
+岡本遼太郎
 
 ### Career
 - 2016年3月       東京都立戸山高等学校卒業  
