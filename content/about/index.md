@@ -1,6 +1,6 @@
 ---
 title: "About"
-date: 2021-03-07T19:09:30+09:00
+date: 2022-07-07T22:49:30+09:00
 draft: false
 ---
 ## About Me
@@ -11,7 +11,8 @@ draft: false
 ### Career
 - 2016年3月       東京都立戸山高等学校卒業  
 - 2020年3月       筑波大学生物学類卒業  
-- 2020年4月〜現在 筑波大学大学院生物学学位プログラム博士前期課程  
+- 2022年3月       筑波大学大学院生物学学位プログラム博士前期課程修了
+- 2022年4月〜現在 筑波大学大学院生物学学位プログラム博士後期課程在学
 - 2020年4月〜現在 国立環境研究所生物多様性保全計画研究室 リサーチ・アシスタント  
 
 ### Research Interests
@@ -33,5 +34,5 @@ So we beat on, boats against the current, borne back ceaselessly into the past."
 
 *The Great Gatsby*  By F. Scott Fitzgerald
 
-## Another blog
+## Yet another blog
 [日々の記録や読書録](https://rain-wanderer.netlify.app/)
