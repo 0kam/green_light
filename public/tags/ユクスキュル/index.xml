@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ユクスキュル on green light</title>
+    <link>https://green-light.netlify.app/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</link>
+    <description>Recent content in ユクスキュル on green light</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <copyright>© okamoto</copyright>
+    <lastBuildDate>Sat, 23 May 2020 18:50:38 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ユクスキュルの環世界とオートマトンへの実装</title>
+      <link>https://green-light.netlify.app/posts/umwelt/</link>
+      <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/posts/umwelt/</guid>
+      <description>20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を</description>
+    </item>
+    
+  </channel>
+</rss>

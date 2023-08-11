@@ -12,16 +12,16 @@ mathjax: true
 ## アルゴリズム
 `alproj`は三つのステップを経て、風景写真の全画素に地理座標を与えます。  
 1. CGで作成した風景のシミュレーション画像（以下、シミュレーション画像）を用いて、写真中に地理座標のわかる点（Ground Control Points, GCPs）をみつける。  
-<img src="/images/alproj/setting_up_gcps.jpg" width="750">
+![](/images/alproj/setting_up_gcps.jpg)
 
-2. GCPを用いて風景写真のカメラパラメータ（カメラの向きやレンズの特性）を推定する。  
-<img src="/images/alproj/estimation_of_camera_parameters.jpg" width="750">
+1. GCPを用いて風景写真のカメラパラメータ（カメラの向きやレンズの特性）を推定する。  
+![](/images/alproj/estimation_of_camera_parameters.jpg)
 
-3. 推定されたカメラパラメータで写真を地形データ上に逆投影し、各画素に地理座標を紐付ける。  
-<img src="/images/alproj/georectification.jpg" width="750">
+1. 推定されたカメラパラメータで写真を地形データ上に逆投影し、各画素に地理座標を紐付ける。  
+![](/images/alproj/georectification.jpg)
 
 この結果、各画素が写している場所の地理座標が得られます。これをGISソフトに読み込ませることで、地理情報化の結果を視覚化することができます。  
-<img src="/images/alproj/ortholike.png" width=512>
+![](/images/alproj/ortholike.png" width=512>)
 
 ## カメラモデル
 `alproj`は[OpenCV](https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html)とほぼ同じカメラモデルを採用していますが、歪み係数を少しだけ変えています。
@@ -221,7 +221,7 @@ import cv2
 sim = sim_image(vert, col, ind, params)
 cv2.imwrite("devel_data/initial.png", sim)
 ```
-<img src="/images/alproj/initial.png" width="700">
+![](/images/alproj/initial.png)
 
 シミュレーション画像は全画素が地理情報を持っているため、画像中の座標と地理座標の対応表を作成することができます。
 
@@ -259,7 +259,7 @@ gcps = set_gcp(match, df)
 ```
 見つかった対応点。
 
-<img src="/images/alproj/matched.png" width="700">
+![](/images/alproj/matched.png)
 
 ```
 >>> gcps
@@ -307,9 +307,9 @@ sim2 = sim_image(vert, col, ind, params_optim)
 cv2.imwrite("optimized.png", sim2)
 ```
 
-<img src="/images/alproj/optimized.png" width="700">    
+![](/images/alproj/optimized.png)    
 
-<img src="/images/alproj/ttym_2016.jpg" width="700">    
+![](/images/alproj/ttym_2016.jpg)    
 
 最後に、風景写真の各画素が写している地理座標を得ることができます。
 無事、風景写真の各画素にそれが写している場所の地理座標を付与することができました。
@@ -384,7 +384,7 @@ ggplot() +
 # Saving raster data as a GeoTiff file.
 write_stars(raster, "ortholike.tif")
 ```
-<img src="/images/alproj/ortholike.png" width="500">
+![](/images/alproj/ortholike.png)
 
 ## 高山生態学、雪氷学への応用
 ここでは写真のRGB値をそのまま用いましたが、 写真を残雪の有無や植生ごとに塗り分けた画像に変換した後に`alproj`を用いて地理座標を付与することで、残雪マップや植生図を得ることもできます。これによって、例えば山小屋設置のウェブカメラの画像等を用いて残雪や紅葉の様子を地理情報として取得し、他の地理情報と組み合わせて解析を行うことができるようになります！

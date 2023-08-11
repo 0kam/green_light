@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>山岳風景写真地理情報化パッケージ`alproj`の使い方 - green light</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="山岳風景写真地理情報化パッケージ`alproj`の使い方" />
+<meta property="og:description" content="alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://green-light.netlify.app/posts/usage_of_alproj/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-08T14:57:38+09:00" />
+<meta property="article:modified_time" content="2021-03-08T14:57:38+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="山岳風景写真地理情報化パッケージ`alproj`の使い方"/>
+<meta name="twitter:description" content="alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮"/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://green-light.netlify.app/css/main.css" /><link rel="stylesheet" type="text/css" href="https://green-light.netlify.app/css/dark.css" media="(prefers-color-scheme: dark)" />
+</head>
+
+<head>
+    
+	
+		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+
+    MathJax.Hub.Config({
+        
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://green-light.netlify.app/css/mathjax-style.css">
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://green-light.netlify.app/">green light</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">山岳風景写真地理情報化パッケージ`alproj`の使い方</h1>
+			<div class="meta">Posted on Mar 8, 2021</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="alprojの概要"><code>alproj</code>の概要</h2>
+<p><code>alproj</code>は山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。
+これを既存の画像解析と組み合わせることによって、例えば登山者が撮影した風景写真から残雪域や植生の地図を作成することができます。</p>
+<h2 id="アルゴリズム">アルゴリズム</h2>
+<p><code>alproj</code>は三つのステップを経て、風景写真の全画素に地理座標を与えます。</p>
+<ol>
+<li>
+<p>CGで作成した風景のシミュレーション画像（以下、シミュレーション画像）を用いて、写真中に地理座標のわかる点（Ground Control Points, GCPs）をみつける。<br>
+<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>GCPを用いて風景写真のカメラパラメータ（カメラの向きやレンズの特性）を推定する。<br>
+<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>推定されたカメラパラメータで写真を地形データ上に逆投影し、各画素に地理座標を紐付ける。<br>
+<!-- raw HTML omitted --></p>
+</li>
+</ol>
+<p>この結果、各画素が写している場所の地理座標が得られます。これをGISソフトに読み込ませることで、地理情報化の結果を視覚化することができます。<br>
+<!-- raw HTML omitted --></p>
+<h2 id="カメラモデル">カメラモデル</h2>
+<p><code>alproj</code>は<a href="https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html">OpenCV</a>とほぼ同じカメラモデルを採用していますが、歪み係数を少しだけ変えています。</p>
+<ul>
+<li>OpenCV
+$$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bmatrix} x&rsquo; \frac{1 + k_1 r^2 + k_2 r^4 + k_3 r^6}{1 + k_4 r^2 + k_5 r^4 + k_6 r^6} + 2 p_1 x&rsquo; y&rsquo; + p_2(r^2 + 2 x&rsquo;^2) + s_1 r^2 + s_2 r^4 \\ y&rsquo; \frac{1 + k_1 r^2 + k_2 r^4 + k_3 r^6}{1 + k_4 r^2 + k_5 r^4 + k_6 r^6} + p_1 (r^2 + 2 y&rsquo;^2) + 2 p_2 x&rsquo; y&rsquo; + s_3 r^2 + s_4 r^4 \ \end{bmatrix} $$</li>
+<li>alproj
+$$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bmatrix} x&rsquo; \frac{1 + k_1 r^2 + k_2 r^4 + k_3 r^6}{1 + k_4 r^2 + k_5 r^4 + k_6 r^6} + 2 p_1 x&rsquo; y&rsquo; + p_2(r^2 + 2 x&rsquo;^2) + s_1 r^2 + s_2 r^4 \\ y&rsquo; \frac{1 + a_1 + k_1 r^2 + k_2 r^4 + k_3 r^6}{1 + a_2 + k_4 r^2 + k_5 r^4 + k_6 r^6} + p_1 (r^2 + 2 y&rsquo;^2) + 2 p_2 x&rsquo; y&rsquo; + s_3 r^2 + s_4 r^4 \ \end{bmatrix} $$</li>
+</ul>
+<p><code>alproj</code>では画素のアスペクト比が1でない（画素が若干縦長や横長になっている）カメラを再現するために、<code>a1</code>、<code>a2</code>を追加しました。</p>
+<h2 id="動作環境">動作環境</h2>
+<p>必要動作環境</p>
+<ul>
+<li>Python3</li>
+<li>RAM 12GB以上</li>
+<li>OpenGL（最近のPCであればまず大丈夫です）
+試験した環境</li>
+<li>Ubuntu 20.04 LTS</li>
+<li>RAM 12 GB</li>
+<li>Python 3.8.5</li>
+</ul>
+<h2 id="依存パッケージ">依存パッケージ</h2>
+<p><code>alproj</code>を使用するには以下のPythonパッケージが必要です。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>numpy
+</span></span><span style="display:flex;"><span>pandas
+</span></span><span style="display:flex;"><span>datatable
+</span></span><span style="display:flex;"><span>rasterio
+</span></span><span style="display:flex;"><span>opencv-python
+</span></span><span style="display:flex;"><span>pillow
+</span></span><span style="display:flex;"><span>moderngl
+</span></span><span style="display:flex;"><span>cmaes
+</span></span><span style="display:flex;"><span>tqdm
+</span></span></code></pre></div><h2 id="インストール方法">インストール方法</h2>
+<p><code>alproj</code>は以下でソースコードが公開されています。</p>
+<p><a href="https://github.com/0kam/alproj">https://github.com/0kam/alproj</a></p>
+<p>pipを使ってインストールすることができます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>pip install git+https://github.com/0kam/alproj
+</span></span></code></pre></div><h2 id="使用例">使用例</h2>
+<p>ここでは<a href="https://db.cger.nies.go.jp/gem/ja/mountain/station.html?id=2">国立環境研究所の立山定点撮影カメラ写真</a>を例に、地理情報化の流れを説明します。写真は2016年に立山室堂山荘（富山県立山町）で撮影されたものです。以下ではこの写真をターゲット写真と呼びます。ターゲット写真の撮影位置は既知である必要があります。
+<img src="/images/ttym_2016.jpg" alt=""></p>
+<h3 id="事前に必要なデータ">事前に必要なデータ</h3>
+<p><code>alproj</code>での作業を始める前に、以下のデータを用意する必要があります。</p>
+<ul>
+<li>
+<p>オルソ済み航空写真</p>
+<p><img src="/images/alproj/airborne.png" alt=""></p>
+</li>
+<li>
+<p>数値表層モデル（Digital Surface Model, DSM）</p>
+<p><img src="/images/alproj/dem.png" alt=""></p>
+</li>
+</ul>
+<p>航空写真とDSMは</p>
+<ul>
+<li>ターゲット写真が写している領域をカバーし</li>
+<li>同じ平面座標系（UTM座標系や平面直角座標系）に変換してある</li>
+</ul>
+<p>必要があります。</p>
+<h3 id="必要なパッケージの読み込み">必要なパッケージの読み込み</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Loading requirements</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> alproj.surface <span style="color:#f92672">import</span> create_db, crop
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> alproj.project <span style="color:#f92672">import</span> sim_image, reverse_proj
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> alproj.gcp <span style="color:#f92672">import</span> akaze_match, set_gcp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> alproj.optimize <span style="color:#f92672">import</span> CMAOptimizer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlite3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> rasterio
+</span></span></code></pre></div><h3 id="点群データベースの作成">①点群データベースの作成</h3>
+<p>まずはじめに、航空写真とDSMを用いて、当該山域の景観をCGで再現するための点群データベースを作成します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#75715e"># 点群の平面解像度（m）</span>
+</span></span><span style="display:flex;"><span>aerial <span style="color:#f92672">=</span> rasterio<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;airborne.tif&#34;</span>) <span style="color:#75715e"># 航空写真 例では40cm解像度のものを使いました。</span>
+</span></span><span style="display:flex;"><span>dsm <span style="color:#f92672">=</span> rasterio<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;dsm.tif&#34;</span>) <span style="color:#75715e"># DSMここでは国土地理院のDEM5mを使っています。</span>
+</span></span><span style="display:flex;"><span>out_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pointcloud.db&#34;</span> <span style="color:#75715e"># 作成されるデータベースのパス</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>create_db(aerial, dsm, out_path) <span style="color:#75715e"># 数分程度かかる場合があります。</span>
+</span></span></code></pre></div><p>これによって、以下の二つの要素を持ったSQLiteデータベースが作成されます。</p>
+<ul>
+<li>
+<p>vertices</p>
+<p>点群の頂点データ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span> # x, y, zは頂点の座標、r, g, bは頂点の色を表します。
+</span></span><span style="display:flex;"><span>id x               y               z               r   g   b
+</span></span><span style="display:flex;"><span>0  7.34942032e+05, 2.54030493e+03, 4.05319697e+06, 96, 91, 82 
+</span></span><span style="display:flex;"><span>1       ...             ...              ...           ...
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div></li>
+<li>
+<p>indices</p>
+<p>頂点のインデックス</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span> # それぞれの行はどの三つの頂点が一つの三角形を成すかを表します。
+</span></span><span style="display:flex;"><span># 例えば一行目は、verticesの0, 3, 4行目の点が三角形を構成することを示しています。
+</span></span><span style="display:flex;"><span>v1       v2       v2
+</span></span><span style="display:flex;"><span>0        3        4
+</span></span><span style="display:flex;"><span>0        4        1
+</span></span><span style="display:flex;"><span>        ...   
+</span></span><span style="display:flex;"><span>7877845  7878552  7877846
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="カメラパラメータの初期値の設定">②カメラパラメータの初期値の設定</h3>
+<p>カメラパラメータを推定するために、初期値を設定します。</p>
+<ul>
+<li>x, y, z<br>
+撮影位置の地理座標。撮影位置の推定はできません。はじめに設定した値がそのまま使われます。</li>
+<li>fov<br>
+視野角（度）。</li>
+<li>pan, tilt, roll<br>
+カメラ姿勢を表すオイラー角（度）。</li>
+<li>a1 ~ s4<br>
+歪み係数・</li>
+<li>w, h<br>
+画像の幅・高さ（ピクセル）。</li>
+<li>cx, cy<br>
+イメージセンサー上での主点の座標（ピクセル）。通常は中央（w/2, h/2）。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;x&#34;</span>:<span style="color:#ae81ff">732731</span>,<span style="color:#e6db74">&#34;y&#34;</span>:<span style="color:#ae81ff">4051171</span>, <span style="color:#e6db74">&#34;z&#34;</span>:<span style="color:#ae81ff">2458</span>, <span style="color:#e6db74">&#34;fov&#34;</span>:<span style="color:#ae81ff">70</span>, <span style="color:#e6db74">&#34;pan&#34;</span>:<span style="color:#ae81ff">100</span>, <span style="color:#e6db74">&#34;tilt&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;roll&#34;</span>:<span style="color:#ae81ff">0</span>,\
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;a1&#34;</span>:<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;a2&#34;</span>:<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;k1&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;k2&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;k3&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;k4&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;k5&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;k6&#34;</span>:<span style="color:#ae81ff">0</span>, \
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;p1&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;p2&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;s1&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;s2&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;s3&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;s4&#34;</span>:<span style="color:#ae81ff">0</span>, \
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;w&#34;</span>:<span style="color:#ae81ff">5616</span>, <span style="color:#e6db74">&#34;h&#34;</span>:<span style="color:#ae81ff">3744</span>, <span style="color:#e6db74">&#34;cx&#34;</span>:<span style="color:#ae81ff">5616</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;cy&#34;</span>:<span style="color:#ae81ff">3744</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>}
+</span></span></code></pre></div><p>このカメラパラメータで景観のシミュレーション画像をレンダリングします。</p>
+<p>まず、点群データベースからカメラから見える範囲の点群を取得します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>conn <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(<span style="color:#e6db74">&#34;pointcloud.db&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>distance <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span> <span style="color:#75715e"># The radius of the fan shape</span>
+</span></span><span style="display:flex;"><span>chunksize <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vert, col, ind <span style="color:#f92672">=</span> crop(conn, params, distance, chunksize) <span style="color:#75715e"># This takes some minutes.</span>
+</span></span></code></pre></div><p>以下のようなnp.arrayが得られます。</p>
+<ul>
+<li>
+<p>vert</p>
+<p>頂点の地理座標。X, Z, Yの順番。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; vert
+</span></span><span style="display:flex;"><span>array([[7.34942032e+05, 2.54030493e+03, 4.05319697e+06],
+</span></span><span style="display:flex;"><span>     [7.34943032e+05, 2.53846924e+03, 4.05319697e+06],
+</span></span><span style="display:flex;"><span>     [7.34941032e+05, 2.54056641e+03, 4.05319597e+06],
+</span></span><span style="display:flex;"><span>     ...,
+</span></span><span style="display:flex;"><span>     [7.34174032e+05, 2.15709058e+03, 4.04854197e+06],
+</span></span><span style="display:flex;"><span>     [7.34175032e+05, 2.15659692e+03, 4.04854197e+06],
+</span></span><span style="display:flex;"><span>     [7.34176032e+05, 2.15609204e+03, 4.04854197e+06]])
+</span></span></code></pre></div></li>
+<li>
+<p>col</p>
+<p>0〜1で表された各頂点の色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; col
+</span></span><span style="display:flex;"><span>array([[0.37647059, 0.35686275, 0.32156863],
+</span></span><span style="display:flex;"><span>     [0.36078431, 0.33333333, 0.30980392],
+</span></span><span style="display:flex;"><span>     [0.42352941, 0.40392157, 0.36078431],
+</span></span><span style="display:flex;"><span>     ...,
+</span></span><span style="display:flex;"><span>     [0.        , 0.        , 0.        ],
+</span></span><span style="display:flex;"><span>     [0.        , 0.        , 0.        ],
+</span></span><span style="display:flex;"><span>     [0.        , 0.        , 0.        ]])
+</span></span></code></pre></div></li>
+<li>
+<p>ind</p>
+<p>どの三つの頂点が一つの三角形を成すかを示すインデックス。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; ind
+</span></span><span style="display:flex;"><span>array([[      0,       3,       4],
+</span></span><span style="display:flex;"><span>     [      0,       4,       1],
+</span></span><span style="display:flex;"><span>     [      1,       4,       5],
+</span></span><span style="display:flex;"><span>     ...,
+</span></span><span style="display:flex;"><span>     [7877844, 7878551, 7877845],
+</span></span><span style="display:flex;"><span>     [7877845, 7878551, 7878552],
+</span></span><span style="display:flex;"><span>     [7877845, 7878552, 7877846]], dtype=int64)
+</span></span></code></pre></div></li>
+</ul>
+<p>次に、シミュレーション画像をレンダリングします。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2
+</span></span><span style="display:flex;"><span>sim <span style="color:#f92672">=</span> sim_image(vert, col, ind, params)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">&#34;devel_data/initial.png&#34;</span>, sim)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>シミュレーション画像は全画素が地理情報を持っているため、画像中の座標と地理座標の対応表を作成することができます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> reverse_proj(sim, vert, ind, params)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; df
+</span></span><span style="display:flex;"><span>             u     v            x           y            z      B      G      R
+</span></span><span style="display:flex;"><span>2058832   3376   366  734200.3125  4050691.75  2988.827881  116.0  120.0  124.0
+</span></span><span style="display:flex;"><span>2058833   3377   366  734199.6875  4050691.75  2988.624268  106.0  110.0  113.0
+</span></span><span style="display:flex;"><span>2058834   3378   366  734198.7500  4050691.25  2988.337402   82.0   86.0   88.0
+</span></span><span style="display:flex;"><span>2058835   3379   366  734198.0000  4050691.25  2988.081543   70.0   75.0   78.0
+</span></span><span style="display:flex;"><span>2058836   3380   366  734197.3750  4050691.25  2987.862061   60.0   65.0   68.0
+</span></span><span style="display:flex;"><span>...        ...   ...          ...         ...          ...    ...    ...    ...
+</span></span><span style="display:flex;"><span>21026299  5611  3743  732740.3125  4051161.75  2453.355469  113.0  117.0  148.0
+</span></span><span style="display:flex;"><span>21026300  5612  3743  732740.3125  4051161.75  2453.355469  113.0  117.0  148.0
+</span></span><span style="display:flex;"><span>21026301  5613  3743  732740.3125  4051161.75  2453.355713  113.0  117.0  148.0
+</span></span><span style="display:flex;"><span>21026302  5614  3743  732740.3125  4051161.75  2453.355713  113.0  117.0  148.0
+</span></span><span style="display:flex;"><span>21026303  5615  3743  732740.3125  4051161.75  2453.355713  113.0  117.0  148.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[17336750 rows x 8 columns]
+</span></span></code></pre></div><h3 id="ground-control-points-gcps-の作成">Ground Control Points (GCPs) の作成</h3>
+<p>シミュレーション画像と風景写真の間に対応点を見つけることで、風景写真中に地理座標と紐付いた点をいくつか作成します。画像間の対応点取得には<a href="https://docs.opencv.org/3.4/d0/de3/citelist.html#CITEREF_ANB13">AKAZE</a> 局所特徴量と<a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_matcher/py_matcher.html#flann-based-matcher">FLANN</a>を用いています。.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>path_org <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;target.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>path_sim <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;init.png&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>match, plot <span style="color:#f92672">=</span> akaze_match(path_org, path_sim, ransac_th<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, plot_result<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">&#34;matched.png&#34;</span>, plot)
+</span></span><span style="display:flex;"><span>gcps <span style="color:#f92672">=</span> set_gcp(match, df)
+</span></span></code></pre></div><p>見つかった対応点。</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; gcps
+</span></span><span style="display:flex;"><span>        u     v            x           y            z
+</span></span><span style="display:flex;"><span>0    2585  1127  733720.2500  4051094.25  2648.573486
+</span></span><span style="display:flex;"><span>1    3566   631  734078.1250  4050727.00  2912.292969
+</span></span><span style="display:flex;"><span>2    3502   689  733951.8750  4050792.75  2849.661865
+</span></span><span style="display:flex;"><span>3    3745   723  733976.0625  4050697.25  2848.271729
+</span></span><span style="display:flex;"><span>4    3833   766  733996.1250  4050657.25  2841.155518
+</span></span><span style="display:flex;"><span>..    ...   ...          ...         ...          ...
+</span></span><span style="display:flex;"><span>147  3355  1126  733688.0625  4050916.50  2648.639893
+</span></span><span style="display:flex;"><span>148  4618  1190  733593.2500  4050619.00  2622.293457
+</span></span><span style="display:flex;"><span>149  2195  1243  733770.3750  4051216.00  2626.165527
+</span></span><span style="display:flex;"><span>150  2533  1777  733437.5625  4051142.25  2474.067383
+</span></span><span style="display:flex;"><span>151  3351  1072  733726.8750  4050907.00  2668.884766
+</span></span></code></pre></div><p><code>u</code>と<code>v</code>はそれぞれ、画像中のx軸方向、y軸方向の座標（左上原点）を表します。</p>
+<h3 id="カメラパラメータ推定">カメラパラメータ推定</h3>
+<p>カメラパラメータは、GCPの地理座標を画像座標系に投影した際の<a href="https://support.pix4d.com/hc/en-us/articles/202559369-Reprojection-error">再投影誤差</a>を最小化することによって最適化されます。最適化には<a href="https://github.com/CyberAgent/cmaes">CMA-ES</a> を用いています。 最適化するカメラパラメータを選ぶこともできます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>obj_points <span style="color:#f92672">=</span> gcps[[<span style="color:#e6db74">&#34;x&#34;</span>,<span style="color:#e6db74">&#34;y&#34;</span>,<span style="color:#e6db74">&#34;z&#34;</span>]] <span style="color:#75715e"># GCPの地理座標系での座標。Object points.</span>
+</span></span><span style="display:flex;"><span>img_points <span style="color:#f92672">=</span> gcps[[<span style="color:#e6db74">&#34;u&#34;</span>,<span style="color:#e6db74">&#34;v&#34;</span>]] <span style="color:#75715e"># GCPの画像座標系での座標Image points.</span>
+</span></span><span style="display:flex;"><span>params_init <span style="color:#f92672">=</span> params <span style="color:#75715e"># カメラパラメータの初期値</span>
+</span></span><span style="display:flex;"><span>target_params <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;fov&#34;</span>, <span style="color:#e6db74">&#34;pan&#34;</span>, <span style="color:#e6db74">&#34;tilt&#34;</span>, <span style="color:#e6db74">&#34;roll&#34;</span>, <span style="color:#e6db74">&#34;a1&#34;</span>, <span style="color:#e6db74">&#34;a2&#34;</span>, <span style="color:#e6db74">&#34;k1&#34;</span>, <span style="color:#e6db74">&#34;k2&#34;</span>, <span style="color:#e6db74">&#34;k3&#34;</span>, <span style="color:#e6db74">&#34;k4&#34;</span>, <span style="color:#e6db74">&#34;k5&#34;</span>, <span style="color:#e6db74">&#34;k6&#34;</span>, <span style="color:#e6db74">&#34;p1&#34;</span>, <span style="color:#e6db74">&#34;p2&#34;</span>, <span style="color:#e6db74">&#34;s1&#34;</span>, <span style="color:#e6db74">&#34;s2&#34;</span>, <span style="color:#e6db74">&#34;s3&#34;</span>, <span style="color:#e6db74">&#34;s4&#34;</span>] <span style="color:#75715e"># 最適化するパラメータ。ここでは最適化できるもの全て。</span>
+</span></span><span style="display:flex;"><span>cma_optimizer <span style="color:#f92672">=</span> CMAOptimizer(obj_points, img_points, params_init) <span style="color:#75715e"># インスタンス生成.</span>
+</span></span><span style="display:flex;"><span>cma_optimizer<span style="color:#f92672">.</span>set_target(target_params)
+</span></span><span style="display:flex;"><span>params_optim, error <span style="color:#f92672">=</span> cma_optimizer<span style="color:#f92672">.</span>optimize(generation <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>, bounds <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>, sigma <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>, population_size<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>) <span style="color:#75715e"># 最適化の実行。errorが10ピクセル以下くらいまで下がらない場合は、繰り返し試してみてください。</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; params_optim, error = cma_optimizer.optimize(generation = 300, bounds = None, sigma = 1.0, population_size=50)
+</span></span><span style="display:flex;"><span>100%|██████████████████████████████| 300/300 [00:34&lt;00:00,  8.70it/s]
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; error
+</span></span><span style="display:flex;"><span>4.8703777893270335
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; params_optim
+</span></span><span style="display:flex;"><span>{&#39;x&#39;: 732731, &#39;y&#39;: 4051171, &#39;z&#39;: 2458, &#39;w&#39;: 5616, &#39;h&#39;: 3744, &#39;cx&#39;: 2808.0, &#39;cy&#39;: 1872.0, &#39;fov&#39;: 72.7290644465022, &#39;pan&#39;: 96.61170204959896, &#39;tilt&#39;: -0.11552408078299625, &#39;roll&#39;: 0.13489679466899157, &#39;a1&#39;: -0.06632296375509533, &#39;a2&#39;: 0.017306226071500935, &#39;k1&#39;: -0.19848898326165829, &#39;k2&#39;: 0.054213972377095715, &#39;k3&#39;: 0.03875795616853486, &#39;k4&#39;: -0.08828147417948777, &#39;k5&#39;: -0.06425366365767886, &#39;k6&#39;: 0.05423288516486188, &#39;p1&#39;: 0.001605487393669105, &#39;p2&#39;: 0.0028034675418415864, &#39;s1&#39;: -0.034626019251498615, &#39;s2&#39;: 0.05211054664935553, &#39;s3&#39;: 0.001925502186032381, &#39;s4&#39;: -0.002550219390348231}
+</span></span></code></pre></div><p>推定されたカメラパラメータでシミュレーション画像を作成すると、元の写真ときれいに重なることがわかります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vert, col, ind <span style="color:#f92672">=</span> crop(conn, params_optim, <span style="color:#ae81ff">3000</span>, <span style="color:#ae81ff">1000000</span>)
+</span></span><span style="display:flex;"><span>sim2 <span style="color:#f92672">=</span> sim_image(vert, col, ind, params_optim)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">&#34;optimized.png&#34;</span>, sim2)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>最後に、風景写真の各画素が写している地理座標を得ることができます。
+無事、風景写真の各画素にそれが写している場所の地理座標を付与することができました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>original <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#34;ttym_2016.jpg&#34;</span>)
+</span></span><span style="display:flex;"><span>georectificated <span style="color:#f92672">=</span> reverse_proj(original, vert, ind, params_optim)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; georectificated
+</span></span><span style="display:flex;"><span>             u     v            x           y            z      B      G      R
+</span></span><span style="display:flex;"><span>3047434   3562   542  734196.7500  4050689.00  2987.948242  176.0  160.0  148.0
+</span></span><span style="display:flex;"><span>3047435   3563   542  734194.6875  4050689.25  2987.231934  171.0  155.0  143.0
+</span></span><span style="display:flex;"><span>3047436   3564   542  734193.3125  4050689.25  2986.759521  175.0  159.0  146.0
+</span></span><span style="display:flex;"><span>3047437   3565   542  734192.6250  4050689.00  2986.516602  185.0  169.0  156.0
+</span></span><span style="display:flex;"><span>3047438   3566   542  734192.1250  4050688.75  2986.366943  191.0  179.0  161.0
+</span></span><span style="display:flex;"><span>...        ...   ...          ...         ...          ...    ...    ...    ...
+</span></span><span style="display:flex;"><span>21026299  5611  3743  732739.0000  4051163.50  2453.503174   98.0  153.0  156.0
+</span></span><span style="display:flex;"><span>21026300  5612  3743  732739.0000  4051163.50  2453.503174   92.0  151.0  153.0
+</span></span><span style="display:flex;"><span>21026301  5613  3743  732739.0000  4051163.50  2453.503174   88.0  152.0  153.0
+</span></span><span style="display:flex;"><span>21026302  5614  3743  732739.0000  4051163.50  2453.503418   89.0  153.0  157.0
+</span></span><span style="display:flex;"><span>21026303  5615  3743  732739.0000  4051163.50  2453.503418   89.0  156.0  159.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[16456070 rows x 8 columns]
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; 
+</span></span></code></pre></div><p>得られた結果は各画素を地理座標系に投影した際の点データです。GISツールを用いることでこの結果を可視化することができます。ここではRの<a href="https://r-spatial.github.io/sf/">sf</a>及び<a href="https://r-spatial.github.io/stars/">stars</a>パッケージを用いて可視化を行います。.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(sf)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(stars)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidyverse)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read result csv file</span>
+</span></span><span style="display:flex;"><span>points <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;georectificated.csv&#34;</span>,
+</span></span><span style="display:flex;"><span>  col_types <span style="color:#f92672">=</span> <span style="color:#a6e22e">cols_only</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;d&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;d&#34;</span>, R <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;d&#34;</span>, G <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;d&#34;</span>, B <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;d&#34;</span>)
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mutate</span>(R <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.integer</span>(R), G <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.integer</span>(G), B <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.integer</span>(B))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Converting the dataframe to points. </span>
+</span></span><span style="display:flex;"><span>points <span style="color:#f92672">&lt;-</span> points <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">st_as_sf</span>(coords <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#e6db74">&#34;y&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rsaterize</span>
+</span></span><span style="display:flex;"><span>R <span style="color:#f92672">&lt;-</span> points <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">select</span>(R) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">st_rasterize</span>(dx <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>, dy <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>G <span style="color:#f92672">&lt;-</span> points <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">select</span>(G) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">st_rasterize</span>(dx <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>, dy <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>B <span style="color:#f92672">&lt;-</span> points <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">select</span>(B) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">st_rasterize</span>(dx <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>, dy <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rm</span>(points)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">gc</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>raster <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(R, G, B) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">merge</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">`st_crs&lt;-`</span>(<span style="color:#ae81ff">6690</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plotting</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">geom_stars</span>(data <span style="color:#f92672">=</span> <span style="color:#a6e22e">st_rgb</span>(raster)) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scale_fill_identity</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Saving raster data as a GeoTiff file.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">write_stars</span>(raster, <span style="color:#e6db74">&#34;ortholike.tif&#34;</span>)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h2 id="高山生態学雪氷学への応用">高山生態学、雪氷学への応用</h2>
+<p>ここでは写真のRGB値をそのまま用いましたが、 写真を残雪の有無や植生ごとに塗り分けた画像に変換した後に<code>alproj</code>を用いて地理座標を付与することで、残雪マップや植生図を得ることもできます。これによって、例えば山小屋設置のウェブカメラの画像等を用いて残雪や紅葉の様子を地理情報として取得し、他の地理情報と組み合わせて解析を行うことができるようになります！</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/%E5%B1%B1%E5%B2%B3">山岳</a></li>
+					
+					<li><a href="/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3">コンピュータビジョン</a></li>
+					
+					<li><a href="/tags/gis">GIS</a></li>
+					
+					<li><a href="/tags/%E7%94%9F%E6%85%8B%E5%AD%A6">生態学</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" title="Facebook"><i data-feather="facebook"></i></a>|⚡️
+	2023  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

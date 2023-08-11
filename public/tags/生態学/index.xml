@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生態学 on green light</title>
+    <link>https://green-light.netlify.app/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</link>
+    <description>Recent content in 生態学 on green light</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <copyright>© okamoto</copyright>
+    <lastBuildDate>Mon, 08 Mar 2021 14:57:38 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>山岳風景写真地理情報化パッケージ`alproj`の使い方</title>
+      <link>https://green-light.netlify.app/posts/usage_of_alproj/</link>
+      <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/posts/usage_of_alproj/</guid>
+      <description>alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮</description>
+    </item>
+    
+    <item>
+      <title>ユクスキュルの環世界とオートマトンへの実装</title>
+      <link>https://green-light.netlify.app/posts/umwelt/</link>
+      <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/posts/umwelt/</guid>
+      <description>20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を</description>
+    </item>
+    
+  </channel>
+</rss>

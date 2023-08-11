@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on green light</title>
+    <link>https://green-light.netlify.app/tags/</link>
+    <description>Recent content in Tags on green light</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <copyright>© okamoto</copyright>
+    <lastBuildDate>Mon, 08 Mar 2021 14:57:38 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GIS</title>
+      <link>https://green-light.netlify.app/tags/gis/</link>
+      <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/gis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>コンピュータビジョン</title>
+      <link>https://green-light.netlify.app/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</link>
+      <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>山岳</title>
+      <link>https://green-light.netlify.app/tags/%E5%B1%B1%E5%B2%B3/</link>
+      <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/%E5%B1%B1%E5%B2%B3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生態学</title>
+      <link>https://green-light.netlify.app/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</link>
+      <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ベルクソン</title>
+      <link>https://green-light.netlify.app/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</link>
+      <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ユクスキュル</title>
+      <link>https://green-light.netlify.app/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</link>
+      <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>人工生命</title>
+      <link>https://green-light.netlify.app/tags/%E4%BA%BA%E5%B7%A5%E7%94%9F%E5%91%BD/</link>
+      <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/%E4%BA%BA%E5%B7%A5%E7%94%9F%E5%91%BD/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

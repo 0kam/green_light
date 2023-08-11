@@ -4,7 +4,8 @@ date: 2022-07-07T22:49:30+09:00
 draft: false
 ---
 ## About Me
-<img src="/static/images/face.jpg" width="150">
+
+![](/images/face.jpg)
 
 岡本遼太郎
 
