@@ -1,6 +1,7 @@
 ---
 title: "Anycubic KobraNeo の改造"
 date: 2023-08-30T12:06:46+09:00
+tags: [3Dプリンター, RaspberryPi]
 draft: false
 ---
 
