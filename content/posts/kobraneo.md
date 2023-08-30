@@ -1,6 +1,6 @@
 ---
 title: "Anycubic KobraNeo の改造"
-date: 2022-08-30T12:06:46+09:00
+date: 2023-08-30T12:06:46+09:00
 draft: false
 ---
 
