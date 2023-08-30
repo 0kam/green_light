@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Anycubic KobraNeo の改造 - green light</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Anycubic KobraNeo の改造" />
+<meta property="og:description" content="はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://green-light.netlify.app/posts/kobraneo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-30T11:03:50+09:00" />
+<meta property="article:modified_time" content="2023-08-30T11:03:50+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Anycubic KobraNeo の改造"/>
+<meta name="twitter:description" content="はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合"/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://green-light.netlify.app/css/main.css" /><link rel="stylesheet" type="text/css" href="https://green-light.netlify.app/css/dark.css" media="(prefers-color-scheme: dark)" />
+</head>
+
+<head>
+    
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://green-light.netlify.app/">green light</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Anycubic KobraNeo の改造</h1>
+			<div class="meta">Posted on Aug 30, 2023</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="はじめに">はじめに</h2>
+<p>最近、研究で3Dプリンターを使うことが多くなりました。
+野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。
+これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合わせて頑張っていたのですが、
+3Dプリンターで自由に作れるととても便利です。3DCADも最近はかなり使いやすくなってきたらしく、
+それほど勉強しないでもある程度のものは作れます。私はLinuxユーザーなのでクラウドで動いてブラウザ上でいじれる<a href="https://www.onshape.com/ja/">Onshape</a>
+を使っていますが、かなりいい感じです。</p>
+<p>研究室には<a href="https://www.prusa3d.com/product/original-prusa-i3-mk3s-3d-printer-3/">Prusa i3 MK3S+</a>があるので基本的にはこれを使って印刷をしていました。
+しかし、なにかの拍子に印刷がうまくいかなくなるタイミングというのが来ます。設定をいろいろ試し、パーツの位置を調節しても、うまく行かない。やがてもう今日は帰れないんじゃないか、という不安に襲われ、もう自宅に置いて寝食をともにしたほうがいいのではないかという気持ちになってきます。
+そうこうしているうちに、<a href="https://www.amazon.co.jp/ANYCUBIC-Anycubic-vyper-3D%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/dp/B0BC1LXQNT?th=1">Anycubic KobraNeo</a>という3Dプリンターを購入しました。購入時価格で3万円弱でしたが、ダイレクトエクストルーダでオートベッドレベリングまでついてくるのはお得に感じました。（今思えば<a href="https://www.amazon.co.jp/Sovol-300x300x340mm%E5%8D%B0%E5%88%B7%E3%82%B5%E3%82%A4%E3%82%BA-PEI%E3%81%B0%E3%81%AD%E9%8B%BC%E7%A3%81%E6%B0%97%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-4-3inch%E3%82%BF%E3%83%83%E3%83%81%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3-32%E3%83%93%E3%83%83%E3%83%88%E3%82%B5%E3%82%A4%E3%83%AC%E3%83%B3%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89/dp/B0BJV3WB2J/ref=d_pd_vtp_sccl_3_6/358-0704816-9539537?pd_rd_w=b2NTP&amp;content-id=amzn1.sym.445d7698-fcdd-4b7c-94ce-1e473f27a23f&amp;pf_rd_p=445d7698-fcdd-4b7c-94ce-1e473f27a23f&amp;pf_rd_r=VN85ER5655M9PH6D3E1S&amp;pd_rd_wg=Yb9RB&amp;pd_rd_r=8fb71ef6-e681-49bd-962d-551dbab91b74&amp;pd_rd_i=B0C77PLFRJ&amp;th=1">Sovol SV06</a>とかのほうが良かったと反省しています。デュアルZ軸とリニアガイドレールは結構ほしいです。）</p>
+<p>以下はKobraNeoを買ってから半年ほどの間に行った改造のメモです。</p>
+<h2 id="デュアルz軸">デュアルZ軸</h2>
+<p>KobraNeoにはZ軸のリードスクリューが片方にしかついていません。これは（特にZホッピングなどの急激な上下運動をする際に）X軸の水平性を保つ上であまり良くありません。
+<a href="https://www.printables.com/model/364889-anycubic-kobra-neogo-dual-z-mod">PrintablesでデュアルZ軸へ改造するためのパーツを見つけた</a>ので、試してみることにしました。</p>
+<h3 id="プリントパーツ">プリントパーツ</h3>
+<p><a href="https://www.printables.com/model/364889-anycubic-kobra-neogo-dual-z-mod">https://www.printables.com/model/364889-anycubic-kobra-neogo-dual-z-mod</a>
+上記リンクのSTLファイルをASAで印刷しました。</p>
+<h3 id="その他部品">その他部品</h3>
+<ul>
+<li><a href="https://www.amazon.co.jp/gp/product/B06XRFGTR4/ref=ppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&amp;th=1">ステッピングモーター</a><br>
+ボディ幅が34 mmのNema17ステッピングモータを使います。</li>
+<li><a href="https://www.amazon.co.jp/gp/product/B09BZBZ7BR/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&amp;th=1">リードスクリュー</a></li>
+</ul>
+<blockquote>
+<p>8 mm dia. * 2 mm pitch * 8 mm lead acme lead screw (I think the one you need for full Z height is 350 mm long. Mine looks short because I just used one that I had from an old printer.)`</p>
+</blockquote>
+<p>と書いてるので、これに合ったものを選びます。切り口の数が4個あるもの（Tr8x8）を選ぶ必要があるので要注意です。</p>
+<ul>
+<li><a href="https://www.amazon.co.jp/Saipor-%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%95%E3%83%88%E3%82%AB%E3%83%97%E3%83%A9-%E3%82%AB%E3%83%97%E3%83%A9%E3%83%BC%E3%82%AB%E3%83%83%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0-17%E3%82%B9%E3%83%86%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC%E3%81%AB%E5%AF%BE%E5%BF%9C-%E7%9B%B4%E5%BE%8419mm%E3%80%81%E9%95%B7%E3%81%9525mm/dp/B07ZMYSYLH/ref=d_pd_sbs_sccl_3_3/358-0704816-9539537?pd_rd_w=6PQiU&amp;content-id=amzn1.sym.4e3fe7e8-7339-4e4f-87be-631ff86daf6e&amp;pf_rd_p=4e3fe7e8-7339-4e4f-87be-631ff86daf6e&amp;pf_rd_r=0RBN2FMENZ5RA4SN52WZ&amp;pd_rd_wg=WO8bv&amp;pd_rd_r=01765439-9cfa-40f2-97ca-8ff26627d29c&amp;pd_rd_i=B07ZMYSYLH&amp;psc=1">モータシャフトカプラー</a></li>
+<li>ネジ</li>
+</ul>
+<blockquote>
+<p>2 - M5<em>40 bolts (you can get away with M5</em>35; that was what i had lying around. but the bolt isn&rsquo;t long enough to engage the nyloc part of the nut.)
+6 - M3<em>10 bolts (4 of these goes in the lead nut, 2 goes in the stepper motor bracket and into the stepper motor)
+2 - M3</em>14 bolts (these goes in the motor bracket)
+6 - M3 nuts (4 of these goes on the bolts through the lead nut. 2 of these go inside the motor bracket together with the m3*14 bolts exerts pressure on the gantry post to secure the motor bracket.)</p>
+</blockquote>
+<p>を用意します。秋葉原の西川電子部品さんにお世話になりました。</p>
+<h3 id="組み立て">組み立て</h3>
+<p><a href="https://1coderookie.github.io/KobraGoNeoInsights/hardware/mainboard/">KobraGoNeo Insights</a>によると、KobraNeoのメインボードは<code>TriGorillaV_3.0.6</code>で、コネクタの配置は下図のようになっています。
+<img src="https://1coderookie.github.io/KobraGoNeoInsights/assets/images/mainboard_complete_labeled_web.jpg" alt="">
+Z軸ステッピングモーター用のコネクタは一つしかないので、線を切って二股に分け、追加のモーターに接続しました。
+ここで、並列にモーターの数が増えると必要な電圧も上がるため、ステッピングモータードライバーのVrefを上げる必要があります。
+Printablesの説明では1.1Vまで上げたということでしたので、これを目指します。上図で右から二番目の赤丸で囲われているポテンショメータと、基板上の任意のGNDにテスターを当てて電圧を測り、ポテンショメータをゆっくり回しながら目標の電圧値になるまで調整します。</p>
+<p>あとは、Printablesの写真を参考にしながら組み立てます。
+完全に組み立てる前に、左右のモーターが同じ向きに回転しているかを確認しておいたほうが無難です。</p>
+<p>これでデュアルZ軸にはなるんですが、X軸の両端が同じ高さになるように手動で調整する必要があるんですよね。これがちょっと面倒です。</p>
+<h2 id="ファンシュラウド">ファンシュラウド</h2>
+<p>オリジナルのファンシュラウドでは造形物の前面にしか風が当たりません。
+印刷速度を上げようとすると、以下に素早く造形物を冷却できるかが重要になってきます。
+ファンの種類や数を変えるのが最もラディカルですが、ファンの覆いを変えるだけでも一定の効果がありました。</p>
+<p><a href="https://www.printables.com/model/470004-anycubic-kobra-neo-fan-duct/comments">https://www.printables.com/model/470004-anycubic-kobra-neo-fan-duct/comments</a></p>
+<p>上記のモデルをPETGで印刷し、オリジナルのファンシュラウドと交換しました。オーバーハングやブリッジの品質が改善したように思います。</p>
+<h2 id="klipper化">Klipper化</h2>
+<p>KobraNeoのファームウェアはMarlinですが、最近は<a href="https://www.klipper3d.org/">Klipper</a>が流行ってきているようです。
+KlipperはUIやステッピングモーターの動作の計算など、計算資源の必要な作業をRaspberryPiなどの汎用コンピュータにやらせ、
+プリンター搭載のマイコンはモーターの操作等にのみ使うというコンセプトのものです。Klipperの搭載によって、印刷速度の向上や
+Input Shapingによる印刷品質の向上が期待できるとされています。幸い、KobraNeoに搭載されている<a href="https://github.com/Klipper3d/klipper/commit/72b6bd7efa1ae282220b4bdcfb789075807ebfd2">Huada HC32F460 MCU</a>はKlipperに公式でサポートされているため、簡単に試すことができます。</p>
+<ul>
+<li><a href="https://1coderookie.github.io/KobraGoNeoInsights/firmware/fw_klipper/">https://1coderookie.github.io/KobraGoNeoInsights/firmware/fw_klipper/</a></li>
+<li><a href="https://github.com/1coderookie/Klipper4KobraGoNeo">https://github.com/1coderookie/Klipper4KobraGoNeo</a></li>
+</ul>
+<p>上記のサイトを参考にしながら、作業を進めます。操作用の汎用コンピュータには、RaspberryPi3Bを使いました。
+ラズパイの固定には<a href="https://www.printables.com/model/567014-kobraneo-raspberrypi-holder">自作のプリントパーツ</a>を使っています。</p>
+<p>ラズパイ等のSBCでKlipperを使う方法はいくつかあるらしいのですが、今回は一番文献がありそうだった<a href="https://docs.mainsail.xyz/">Mainsail</a>を用いました。
+RaspbianベースのOSで、Klipperのファームウェア、プリンターとの通信モジュール、操作用のWebUIなどがセットになっています。RaspberryPi Imagerから直接インストールすることが可能です。</p>
+<p><img src="https://media.printables.com/media/prints/567014/images/4539143_e4f7287b-9870-4af3-9210-2f517625e9c1/thumbs/inside/1280x960/jpg/raspberrypi_holder.webp" alt="">
+完成写真。ラズパイ取り付けの液晶のUIには、<a href="https://klipperscreen.readthedocs.io/en/latest/">KlipperScreen</a>を使いました。</p>
+<p>設定ファイルも基本的には上記Githubのものを使ったのですが、<code>printer.cfg</code>の<code>endstop_pin</code>を<code>^PC14</code>から<code>endstop_pin: probe:z_virtual_endstop</code>
+に変更しました。これはベッドメッシュレベリングの際に、エンドピンを物理ピンにしたままだとプローブがベッドを検出する前に動作が止まってしまうからです。自分の個体では、Z-offsetは+0.15くらいになりました。Z-offsetを保存する際に、エンドピンまでか、プローブまでかを聞かれますが、ここではプローブをエンドピンの代わりに利用しているため、「エンドピンまで」を選択します。</p>
+<p>肝心の造形品質ですが、たしかに表面の滑らかさは上がり、積層痕もかなり目立たなくなりました。また、これまでカクカクしていた動作がなめらかになり、それによって動作音も静かになった印象を受けます。加減速がスムーズでスマートに動くので、見ていて気持ちいいですね。</p>
+<p>加速度センサーをプリントヘッドに取り付けてプリンターの振動を計測することで、それを打ち消すような制御を行うInput Shapingも実装されているということなので、後日試してみようと思います。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC">3Dプリンター</a></li>
+					
+					<li><a href="/tags/raspberrypi">RaspberryPi</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" title="Facebook"><i data-feather="facebook"></i></a>|⚡️
+	2023  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

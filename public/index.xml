@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Mon, 08 Mar 2021 14:57:38 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Aug 2023 11:03:50 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anycubic KobraNeo の改造</title>
+      <link>https://green-light.netlify.app/posts/kobraneo/</link>
+      <pubDate>Wed, 30 Aug 2023 11:03:50 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/posts/kobraneo/</guid>
+      <description>はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>https://green-light.netlify.app/about/</link>

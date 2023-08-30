@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Mon, 08 Mar 2021 14:57:38 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Aug 2023 11:03:50 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3Dプリンター</title>
+      <link>https://green-light.netlify.app/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/</link>
+      <pubDate>Wed, 30 Aug 2023 11:03:50 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RaspberryPi</title>
+      <link>https://green-light.netlify.app/tags/raspberrypi/</link>
+      <pubDate>Wed, 30 Aug 2023 11:03:50 +0900</pubDate>
+      
+      <guid>https://green-light.netlify.app/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>GIS</title>
       <link>https://green-light.netlify.app/tags/gis/</link>
