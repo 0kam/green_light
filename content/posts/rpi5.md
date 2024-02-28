@@ -1,6 +1,6 @@
 ---
 title: "RaspberryPi 5のセットアップ"
-date: 2024-02-14T11:03:50+09:00
+date: 2024-02-28T11:03:50+09:00
 tags: [RaspberryPi]
 draft: false
 ---
