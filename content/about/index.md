@@ -34,6 +34,9 @@ draft: false
 - 2020年11月 雪氷研究大会@オンライン 口頭発表部門 学生最優秀発表賞  
 - 2024年1月 つくばサイエンスアカデミー SATテクノロジー・ショーケース2024@つくば国際会議場 プレゼンテーション賞（若手特別賞）
 
+### Contact me
+email: okamoto.ryotaro.suあっとまーくalumni.tsukuba.ac.jp
+
 ## About the title
 "Gatsby believed in the green light, the orgastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. And one fine morning——
 So we beat on, boats against the current, borne back ceaselessly into the past."
