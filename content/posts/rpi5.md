@@ -68,6 +68,6 @@ PCからラズパイへのアクセスにはSSHを使うことのほうが多い
   ```
   ここで、このRTCアラームを`cron`で定時に実行すれば、間欠動作ができます。例えば下の例では、毎日6:30にアラームをかけてシャットダウンしています。この作業にはroot権限が必要なため、`sudo crontab -u root -e`としてroot権限でcrontabを作成します。
   ```
-  30 6 * * * /bin/bash /home/coot/virtual_net_zero_camera/shs/alarm.sh >> /home/coot/cron.log 2>&1
+  30 6 * * * /bin/bash /home/pi/alarm.sh
   ```
   これによって、上の例ではラズパイは毎日6:30にシャットダウンし、それから10時間半後の17:00にRTCアラームで自動起動することができます。
