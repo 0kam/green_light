@@ -29,7 +29,7 @@ Regolith Linux (Ubuntu 21.10)
 
 ノートPCとUSBシリアル変換モジュール、ラズパイのUARTコネクタを接続し、ノートPC上で`minicom -D /dev/ttyUSB0`を実行するとラズパイのシリアルコンソールにアクセスすることができます。デフォルトのボーレートは115200です。
 
-![](/images/rpi/serial_console.png)
+![](/images/rpi5/serial_console.png)
 
 PCからラズパイへのアクセスにはSSHを使うことのほうが多い印象ですが、
 ネットワーク設定の要らないUART接続も気軽で便利です。
