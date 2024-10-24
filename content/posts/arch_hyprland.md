@@ -5,10 +5,10 @@ tags: [Linux]
 draft: false
 ---
 ## はじめに
-> I use arch, btw...  
-https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/
 
 ![](/images/arch_hyprland/meme.png)
+> I use arch, btw...  
+https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/
 
 5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更Macを買うお金も無いし、どうしようと思った矢先に、指導教員の「普段使いのガジェットをLinuxにすれば、自ずとLinuxが使えるようになる」という言葉を思い出しました。当時使っていたノートPCがWindows10非対応の古いマシンだったことも相まって、大学4年生の自分はLinuxへの全面移行を決意しました。  
 いざ使い始めてみると、WindowsやOSXと違ってオープンで多様なディストリビューションやデスクトップ環境が存在するLinuxは、飽きっぽい自分の性分に大変合っており、半年に1回くらいの頻度で様々なディストリビューションを点々とする生活を送っています。  
@@ -85,7 +85,7 @@ waybarはwayland環境で使えるバー型のウィジェットで、コンフ�
 ### トラブルシューティング
 #### Chromiumベースのソフト（Chromium, VSCode, Discord...）で日本語入力がおかしい
 WaylandネイティブでChromiumベースのソフトを動かした場合、日本語入力がうまくできません。
-これは、[ChromiumがWaylandのtext-input-v3に](https://zenn.dev/yangniao23/scraps/1ea51913f482cf)対応していないことが問題です。`Gecko`をレンダリングエンジンに使っているブラウザ(Firefox等)はtext-input-v3に対応しているので、こちらを使いましょう。また、VSCodeは[Zed](https://zed.dev/)等への以降を考えてもいいかもしれません。Discrod等、Electronで作られているデスクトップソフトを使う場合には、以下のようにしてオプションを与えてあげると（一応）日本語入力ができるようになります。ただ、入力途中でバックスペースを押すと文字入力ができなくなる、等の問題が、まだあります。
+これは、[ChromiumがWaylandのtext-input-v3に](https://zenn.dev/yangniao23/scraps/1ea51913f482cf)対応していないことが問題です。`Gecko`をレンダリングエンジンに使っているブラウザ(Firefox等)はtext-input-v3に対応しているので、こちらを使いましょう。また、VSCodeは[Zed](https://zed.dev/)等への移行を考えてもいいかもしれません。Discrod等、Electronで作られているデスクトップソフトを使う場合には、以下のようにしてオプションを与えてあげると（一応）日本語入力ができるようになります。ただ、入力途中でバックスペースを押すと文字入力ができなくなる、等の問題が、まだあります。
 
 ```
 # Win + D でDiscordを起動する
