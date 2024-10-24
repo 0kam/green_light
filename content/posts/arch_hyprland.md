@@ -5,7 +5,10 @@ tags: [Linux]
 draft: false
 ---
 ## はじめに
-<img src="/images/arch_hyprland/meme.png" width=100>
+> I use arch, btw...
+https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/
+
+<img src="/static/images/arch_hyprland/meme.png" width=100>
 
 5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更Macを買うお金も無いし、どうしようと思った矢先に、指導教員の「普段使いのガジェットをLinuxにすれば、自ずとLinuxが使えるようになる」という言葉を思い出しました。当時使っていたノートPCがWindows10非対応の古いマシンだったことも相まって、大学4年生の自分はLinuxへの全面移行を決意しました。  
 いざ使い始めてみると、WindowsやOSXと違ってオープンで多様なディストリビューションやデスクトップ環境が存在するLinuxは、飽きっぽい自分の性分に大変合っており、半年に1回くらいの頻度で様々なディストリビューションを点々とする生活を送っています。  
