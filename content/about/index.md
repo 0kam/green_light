@@ -5,7 +5,7 @@ draft: false
 ---
 ## About Me
 
-![](/images/me2.jpeg)
+![](/images/me2.jpg)
 
 岡本遼太郎
 Ryotaro Okamoto
