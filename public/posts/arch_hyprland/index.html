@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html><head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=443&amp;path=blog/livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>タイル型ウィンドウマネージャ（Hyprland）のすゝめ - green light</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="タイル型ウィンドウマネージャ（Hyprland）のすゝめ" />
+<meta property="og:description" content="はじめに I use arch, btw&hellip; https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/ 5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0kam.net/blog/posts/arch_hyprland/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-22T23:44:30+09:00" />
+<meta property="article:modified_time" content="2024-05-22T23:44:30+09:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="タイル型ウィンドウマネージャ（Hyprland）のすゝめ"/>
+<meta name="twitter:description" content="はじめに I use arch, btw&hellip; https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/ 5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更"/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://0kam.net/blog/css/main.css" /><link rel="stylesheet" type="text/css" href="https://0kam.net/blog/css/dark.css" media="(prefers-color-scheme: dark)" />
+</head>
+
+<head>
+    
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://0kam.net/blog/">green light</a>
+	</div>
+	<nav>
+		
+		<a href="../../">Home</a>
+		
+		<a href="../../posts">All posts</a>
+		
+		<a href="../../about">About</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">タイル型ウィンドウマネージャ（Hyprland）のすゝめ</h1>
+			<div class="meta">Posted on May 22, 2024</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="はじめに">はじめに</h2>
+<p><img src="../../images/arch_hyprland/meme.png" alt=""></p>
+<blockquote>
+<p>I use arch, btw&hellip;<br>
+<a href="https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/">https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/</a></p>
+</blockquote>
+<p>5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更Macを買うお金も無いし、どうしようと思った矢先に、指導教員の「普段使いのガジェットをLinuxにすれば、自ずとLinuxが使えるようになる」という言葉を思い出しました。当時使っていたノートPCがWindows10非対応の古いマシンだったことも相まって、大学4年生の自分はLinuxへの全面移行を決意しました。<br>
+いざ使い始めてみると、WindowsやOSXと違ってオープンで多様なディストリビューションやデスクトップ環境が存在するLinuxは、飽きっぽい自分の性分に大変合っており、半年に1回くらいの頻度で様々なディストリビューションを点々とする生活を送っています。<br>
+（Mint -&gt; Ubuntu -&gt; Manjaro -&gt; Arch -&gt; OpenSUSE -&gt; Endeavour -&gt; Regolith -&gt; Arch）</p>
+<p>最近、1年近く使っていた<a href="https://regolith-desktop.com/">Regolith Linux（タイル型ウィンドウマネージャi3WM/SwayをUbuntuで動かすためのデスクトップ環境）</a>から<a href="http://www.archlinux.jp/">Archlinux</a> + <a href="https://hyprland.org/">Hyprland</a>へ移行したところなので、メモ代わりに環境構築の要点を書いておきます。Hyprlandはまだ開発途上で今後も大きな変更が想定されるため、この記事の内容を参考にする際は公式ドキュメントや<a href="https://wiki.archlinux.jp/index.php/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">Archwiki</a>を合わせて読むことをおすすめします。</p>
+<h2 id="タイル型ウィンドウマネージャとhyprlandについて">タイル型ウィンドウマネージャとHyprlandについて</h2>
+<p><a href="http://id.nii.ac.jp/1001/00009260/">柴田 2009</a>が企業の知的財産管理に携わる被験者8人に対して行った実験によれば、被験者がPCを操作する時間のうち実に8.5%(!)がウィンドウのアクティブ化、移動、サイズ変更といったウィンドウ操作に使われていました。ウィンドウ操作時間の削減にはデュアルディスプレイ環境の導入が有効であった（13.5%削減）ものの、より大きなディスプレイの導入には効果がありませんでした。論文ではこの結果に対して「現状の多くのOSで採用されているウィンドウシステムの振る舞いに疑問を呈すもの」だと結論づけています。これは私の体感とも合致するもので、実際私自身、画面の左にエディタを開いて、右にブラウザを開いて、両者のサイズを調整して、時々GISソフトに画面を切り替えて…とウィンドウ操作に不毛で腹立たしい時間を使っていました。そう、タイル型ウィンドウマネージャを導入するまでは&hellip;</p>
+<p>普段私達がPCを使う際には、ブラウザやファイルマネージャやエディタ、チャットアプリ等の様々なウィンドウを開きます。このウィンドウの配置や表示順序を管理しているシステムのことをウィンドウマネージャと呼びます。WindowsやMacOSのように、複数のウィンドウの重なりを許すウィンドウマネージャのことを<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E5%9E%8B%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">フロート型ウィンドウマネージャ</a>と呼びます。これに対し、下のスクリーンショットのように、各ウィンドウを互いに重ならないようにに配置して表示するものを<a href="https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%A4%E3%83%AB%E5%9E%8B%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">タイル型ウィンドウマネージャ</a>と呼びます。タイル型ウィンドウマネージャでは（WindowsやMacOSにもありますが）ワークスペースと呼ばれる仮想デスクトップが複数用意されていて、ワークスペース①にはブラウザとエディタを、②にはファイルマネージャと画像プレビューアを…というふうに使い分けるのが普通です。
+<img src="../../images/arch_hyprland/screenshot.png" alt="alt text"></p>
+<p>タイル型ウィンドウマネージャの最大のメリットは、各ウィンドウが画面内にきっちり隙間なく埋まった状態を簡単に作れ、ウィンドウサイズの変更やウィンドウの移動、アクティブ化をキーボード操作で素早く行えることにあります。</p>
+<p>Linuxで動くタイル型ウィンドウマネージャにはXorgで動く<a href="https://i3wm.org/">i3</a>やWaylandで動く<a href="https://swaywm.org/">Sway</a>など種々あります（私が初めてインストールしたのはi3でした）が、今回は軽量かつアニメーションが楽しい<a href="https://hyprland.org/">Hyprland</a>を導入しました。
+Hyprlandの動作イメージは下の動画のような感じです。</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/XK7gal3Wrtk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="archlinux--hyprlandの環境構築メモ">Archlinux + Hyprlandの環境構築メモ</h2>
+<p>Hyprlandは2022年にベータ版の初リリースが行われたばかりの極めて新しいソフトウェアであり、関連ソフトも含めて良くサポートされているのは2024年5月現在で<a href="https://wiki.hyprland.org/Getting-Started/Installation/#packages">Arch, NixOS, openSUSE Tumbleweed</a>だけです。他のディストリビューションでもコミュニティベースでの導入が進みつつはありますが、公式でサポートされた上記の（あまり親切ではない）ディストリビューションを選ぶのが無難です。今回はArchlinuxを使います。</p>
+<h3 id="arch-linuxのインストール">Arch Linuxのインストール</h3>
+<p>Arch Linuxは<a href="http://www.archlinux.jp/">Keep It Simple を標榜する、軽量で柔軟性に優れた Linux® ディストリビューション</a>であり、<a href="https://wiki.archlinux.jp/index.php/Arch_Linux">最小限の基本システムの状態でインストールされ、ユーザー自身が、ユーザーの理想とする環境のために必要なものだけをインストールして構築することができ</a>るのが特徴です。つまり、必要なソフトは自分で探して入れる必要があります。これは大変なことですが、Arch Linuxには<a href="https://wiki.archlinux.jp/index.php/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">ArchWiki</a>というまれに見る高品質なドキュメントがあるため、<del>ゴミみたいなSta**Overflowを何時間も見なくて済みます</del> トラブルを通じて普段使っているLinuxシステムについて、より詳しく学ぶことが可能です。</p>
+<p>Arch Linuxのインストールは最近まで、すべてコマンドを打ち込んで行うしんどいものでしたが、気がついたら<a href="https://wiki.archlinux.jp/index.php/Archinstall">archinstall</a>の導入でかなり簡単になりました。
+archinstallでの設定方法については<a href="https://japan.zdnet.com/article/35212977/">このブログ</a>や<a href="https://qiita.com/jibri/items/7d352afcfc2754cfb0a0">このブログ</a>を参考にしました。Profile -&gt; DesktopからHyprlandを選択するとHyprlandがデフォルトでインストールされますが、ここではとりあえずKDE等メジャーなデスクトップ環境を保険にインストールしておくのも良いかもしれません。ちなみに、<a href="https://wiki.hyprland.org/Useful-Utilities/Hyprland-desktop-portal/">xdg-desktop-potal-hyprland</a>をインストールする際に<a href="https://wiki.archlinux.jp/index.php/PipeWire">pipewire</a>が必要になるため、Audioはpipewireを選択しておくのが無難です。</p>
+<h3 id="hyprlandの設定">Hyprlandの設定</h3>
+<p>Hyprlandの設定は <code>~/.config/hypr/hyprland.conf</code> に書き込む形で行います。
+書き方は<a href="https://wiki.hyprland.org/Configuring/">公式ドキュメント</a>に詳しく書かれています。<br>
+例として特定のソフトを起動するショートカットを追加する場合には、<code>bind = $mainMod, E, exec, $fileManager</code> という行を追加します。</p>
+<p>Hyplandではディスプレイやキーボードといった機器周辺の設定もこのコンフィグファイルで行います。
+接続しているディスプレイの名称は<code>hyprctl monitors all</code>で、マウスやキーボードの名称は<code>hyptctl devices</code>でリストアップできます。最後の行では、Win + K でキーボードレイアウトの読み込みを行う設定にしています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># Monitor settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Laptop display</span>
+</span></span><span style="display:flex;"><span>monitor<span style="color:#f92672">=</span>eDP<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1920</span>x1080, <span style="color:#ae81ff">0x0</span>, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## External display</span>
+</span></span><span style="display:flex;"><span>monitor<span style="color:#f92672">=</span>HDMI<span style="color:#f92672">-</span>A<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2400</span>x1350, <span style="color:#ae81ff">0</span>x<span style="color:#f92672">-</span><span style="color:#ae81ff">1350</span>, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># monitor=HDMI-A-1, 1920x1080, 0x-1080, 1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For all categories, see https://wiki.hyprland.org/Configuring/Variables/</span>
+</span></span><span style="display:flex;"><span>input {
+</span></span><span style="display:flex;"><span>    kb_layout <span style="color:#f92672">=</span> jp, us
+</span></span><span style="display:flex;"><span>    kb_variant <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    kb_model <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    kb_options <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    kb_rules <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    follow_mouse <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    touchpad {
+</span></span><span style="display:flex;"><span>        natural_scroll <span style="color:#f92672">=</span> yes
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    sensitivity <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#75715e"># -1.0 to 1.0, 0 means no modification.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exec<span style="color:#f92672">-</span>once <span style="color:#f92672">=</span> hyprctl switchxkblayout at<span style="color:#f92672">-</span>translated<span style="color:#f92672">-</span>set<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>keyboard <span style="color:#ae81ff">0</span> <span style="color:#75715e"># jp</span>
+</span></span><span style="display:flex;"><span>exec<span style="color:#f92672">-</span>once <span style="color:#f92672">=</span> hyprctl switchxkblayout compx<span style="color:#f92672">-</span>flow84<span style="color:#960050;background-color:#1e0010">@</span>lofree <span style="color:#ae81ff">1</span> <span style="color:#75715e"># us</span>
+</span></span><span style="display:flex;"><span>bind <span style="color:#f92672">=</span> <span style="color:#f92672">$</span>mainMod, K, exec, hyprctl switchxkblayout hyprctl switchxkblayout flow84<span style="color:#960050;background-color:#1e0010">@</span>lofree <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h3 id="あると便利なソフト">あると便利なソフト</h3>
+<p><a href="https://wiki.hyprland.org/Useful-Utilities/Must-have/">Must haveなソフト</a>や、<a href="https://wiki.hyprland.org/Useful-Utilities/Hypr-Ecosystem/">Hyprland 関連ソフト</a>については公式Wikiに詳しい情報があるのでこちらを参照してください。また、日本語入力の設定等、他のデスクトップ環境でも共通して必要な作業については省略します。</p>
+<h4 id="waybarhttpsgithubcomalexayswaybar"><a href="https://github.com/Alexays/Waybar">waybar</a></h4>
+<p>waybarはwayland環境で使えるバー型のウィジェットで、コンフィグファイルで高度にカスタマイズできます。
+自分は <a href="https://github.com/JaKooLit/Hyprland-Dots/tree/main/config/waybar">https://github.com/JaKooLit/Hyprland-Dots/tree/main/config/waybar</a> を参考に作りました。</p>
+<h3 id="トラブルシューティング">トラブルシューティング</h3>
+<h4 id="chromiumベースのソフトchromium-vscode-discordで日本語入力がおかしい">Chromiumベースのソフト（Chromium, VSCode, Discord&hellip;）で日本語入力がおかしい</h4>
+<p>WaylandネイティブでChromiumベースのソフトを動かした場合、日本語入力がうまくできません。
+これは、<a href="https://zenn.dev/yangniao23/scraps/1ea51913f482cf">ChromiumがWaylandのtext-input-v3に</a>対応していないことが問題です。<code>Gecko</code>をレンダリングエンジンに使っているブラウザ(Firefox等)はtext-input-v3に対応しているので、こちらを使いましょう。また、VSCodeは<a href="https://zed.dev/">Zed</a>等への移行を考えてもいいかもしれません。Discrod等、Electronで作られているデスクトップソフトを使う場合には、以下のようにしてオプションを与えてあげると（一応）日本語入力ができるようになります。ただ、入力途中でバックスペースを押すと文字入力ができなくなる、等の問題が、まだあります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Win + D でDiscordを起動する
+</span></span><span style="display:flex;"><span>bind = $mainMod, D, exec, discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime 
+</span></span></code></pre></div><h4 id="音が出ないオーディオがダミーと内部オーディオを行ったり来たりする">音が出ない/オーディオがダミーと内部オーディオを行ったり来たりする</h4>
+<p>Linuxのサウンドサーバーには長らく<a href="https://wiki.archlinux.jp/index.php/PulseAudio">PulseAudio</a>が使われてきましたが、近年では<a href="https://wiki.archlinux.jp/index.php/PipeWire">Pipewire</a>に代替されつつあります。<a href="https://wiki.hyprland.org/Useful-Utilities/Must-have/">HyprlandではPipewireの利用が推奨されている</a>ため、こちらをつかいましょう。なにかの手違いでPipewireとPulseAudioが同居するとこういったトラブルが起きやすいので、音声関連のトラブルが生じた場合は、音声周りのソフトをすべてアンインストールし、<a href="https://wiki.archlinux.jp/index.php/PipeWire">pipewire</a>と<a href="https://wiki.archlinux.jp/index.php/WirePlumber">wireplumber</a>を再度インストールすると解決することがあります。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="../../tags/linux">Linux</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" title="Facebook"><i data-feather="facebook"></i></a>|⚡️
+	2025  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

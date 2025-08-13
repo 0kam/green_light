@@ -1,4 +1,7 @@
-baseURL = "https://green-light.netlify.app/"
+baseURL = "https://0kam.net/blog/"
+relativeURLs = true
+canonifyURLs = true
+uglyURLs = false
 languageCode = "jp"
 title = "green light"
 theme="archie"
@@ -35,8 +38,3 @@ weight = 2
 name = "About"
 url = "/about"
 weight = 3
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 4

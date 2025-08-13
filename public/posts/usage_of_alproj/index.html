@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=443&amp;path=blog/livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>山岳風景写真地理情報化パッケージ`alproj`の使い方 - green light</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="山岳風景写真地理情報化パッケージ`alproj`の使い方" />
 <meta property="og:description" content="alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://green-light.netlify.app/posts/usage_of_alproj/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://0kam.net/blog/posts/usage_of_alproj/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-08T14:57:38+09:00" />
 <meta property="article:modified_time" content="2021-03-08T14:57:38+09:00" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="山岳風景写真地理情報化パッケージ`alproj`の使い方"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="山岳風景写真地理情報化パッケージ`alproj`の使い方"/>
 <meta name="twitter:description" content="alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮"/>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" media="screen" href="https://green-light.netlify.app/css/main.css" /><link rel="stylesheet" type="text/css" href="https://green-light.netlify.app/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://0kam.net/blog/css/main.css" /><link rel="stylesheet" type="text/css" href="https://0kam.net/blog/css/dark.css" media="(prefers-color-scheme: dark)" />
 </head>
 
 <head>
@@ -52,23 +51,21 @@
 
 </script>
 
-<link rel="stylesheet" type="text/css" href="https://green-light.netlify.app/css/mathjax-style.css">
+<link rel="stylesheet" type="text/css" href="https://0kam.net/blog/css/mathjax-style.css">
 	
 </head>
 <body>
         <div class="content"><header>
 	<div class="main">
-		<a href="https://green-light.netlify.app/">green light</a>
+		<a href="https://0kam.net/blog/">green light</a>
 	</div>
 	<nav>
 		
-		<a href="/">Home</a>
+		<a href="../../">Home</a>
 		
-		<a href="/posts">All posts</a>
+		<a href="../../posts">All posts</a>
 		
-		<a href="/about">About</a>
-		
-		<a href="/tags">Tags</a>
+		<a href="../../about">About</a>
 		
 	</nav>
 </header>
@@ -90,15 +87,15 @@
 <ol>
 <li>
 <p>CGで作成した風景のシミュレーション画像（以下、シミュレーション画像）を用いて、写真中に地理座標のわかる点（Ground Control Points, GCPs）をみつける。<br>
-<img src="/images/alproj/setting_up_gcps.jpg" alt=""></p>
+<img src="../../images/alproj/setting_up_gcps.jpg" alt=""></p>
 </li>
 <li>
 <p>GCPを用いて風景写真のカメラパラメータ（カメラの向きやレンズの特性）を推定する。<br>
-<img src="/images/alproj/estimation_of_camera_parameters.jpg" alt=""></p>
+<img src="../../images/alproj/estimation_of_camera_parameters.jpg" alt=""></p>
 </li>
 <li>
 <p>推定されたカメラパラメータで写真を地形データ上に逆投影し、各画素に地理座標を紐付ける。<br>
-<img src="/images/alproj/georectification.jpg" alt=""></p>
+<img src="../../images/alproj/georectification.jpg" alt=""></p>
 </li>
 </ol>
 <p>この結果、各画素が写している場所の地理座標が得られます。これをGISソフトに読み込ませることで、地理情報化の結果を視覚化することができます。<br>
@@ -141,17 +138,17 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>pip install git+https://github.com/0kam/alproj
 </span></span></code></pre></div><h2 id="使用例">使用例</h2>
 <p>ここでは<a href="https://db.cger.nies.go.jp/gem/ja/mountain/station.html?id=2">国立環境研究所の立山定点撮影カメラ写真</a>を例に、地理情報化の流れを説明します。写真は2016年に立山室堂山荘（富山県立山町）で撮影されたものです。以下ではこの写真をターゲット写真と呼びます。ターゲット写真の撮影位置は既知である必要があります。
-<img src="/images/ttym_2016.jpg" alt=""></p>
+<img src="../../images/ttym_2016.jpg" alt=""></p>
 <h3 id="事前に必要なデータ">事前に必要なデータ</h3>
 <p><code>alproj</code>での作業を始める前に、以下のデータを用意する必要があります。</p>
 <ul>
 <li>
 <p>オルソ済み航空写真</p>
-<p><img src="/images/alproj/airborne.png" alt=""></p>
+<p><img src="../../images/alproj/airborne.png" alt=""></p>
 </li>
 <li>
 <p>数値表層モデル（Digital Surface Model, DSM）</p>
-<p><img src="/images/alproj/dem.png" alt=""></p>
+<p><img src="../../images/alproj/dem.png" alt=""></p>
 </li>
 </ul>
 <p>航空写真とDSMは</p>
@@ -271,7 +268,7 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2
 </span></span><span style="display:flex;"><span>sim <span style="color:#f92672">=</span> sim_image(vert, col, ind, params)
 </span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">&#34;devel_data/initial.png&#34;</span>, sim)
-</span></span></code></pre></div><p><img src="/images/alproj/initial.png" alt=""></p>
+</span></span></code></pre></div><p><img src="../../images/alproj/initial.png" alt=""></p>
 <p>シミュレーション画像は全画素が地理情報を持っているため、画像中の座標と地理座標の対応表を作成することができます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> reverse_proj(sim, vert, ind, params)
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; df
@@ -294,11 +291,11 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>path_org <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;target.jpg&#34;</span>
 </span></span><span style="display:flex;"><span>path_sim <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;init.png&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>match, plot <span style="color:#f92672">=</span> akaze_match(path_org, path_sim, ransac_th<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, plot_result<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">match</span>, plot <span style="color:#f92672">=</span> akaze_match(path_org, path_sim, ransac_th<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, plot_result<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">&#34;matched.png&#34;</span>, plot)
-</span></span><span style="display:flex;"><span>gcps <span style="color:#f92672">=</span> set_gcp(match, df)
+</span></span><span style="display:flex;"><span>gcps <span style="color:#f92672">=</span> set_gcp(<span style="color:#66d9ef">match</span>, df)
 </span></span></code></pre></div><p>見つかった対応点。</p>
-<p><img src="/images/alproj/matched.png" alt=""></p>
+<p><img src="../../images/alproj/matched.png" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; gcps
 </span></span><span style="display:flex;"><span>        u     v            x           y            z
 </span></span><span style="display:flex;"><span>0    2585  1127  733720.2500  4051094.25  2648.573486
@@ -332,8 +329,8 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vert, col, ind <span style="color:#f92672">=</span> crop(conn, params_optim, <span style="color:#ae81ff">3000</span>, <span style="color:#ae81ff">1000000</span>)
 </span></span><span style="display:flex;"><span>sim2 <span style="color:#f92672">=</span> sim_image(vert, col, ind, params_optim)
 </span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">&#34;optimized.png&#34;</span>, sim2)
-</span></span></code></pre></div><p><img src="/images/alproj/optimized.png" alt=""></p>
-<p><img src="/images/alproj/ttym_2016.jpg" alt=""></p>
+</span></span></code></pre></div><p><img src="../../images/alproj/optimized.png" alt=""></p>
+<p><img src="../../images/alproj/ttym_2016.jpg" alt=""></p>
 <p>最後に、風景写真の各画素が写している地理座標を得ることができます。
 無事、風景写真の各画素にそれが写している場所の地理座標を付与することができました。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>original <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#34;ttym_2016.jpg&#34;</span>)
@@ -399,7 +396,7 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Saving raster data as a GeoTiff file.</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">write_stars</span>(raster, <span style="color:#e6db74">&#34;ortholike.tif&#34;</span>)
-</span></span></code></pre></div><p><img src="/images/alproj/ortholike.png" alt=""></p>
+</span></span></code></pre></div><p><img src="../../images/alproj/ortholike.png" alt=""></p>
 <h2 id="高山生態学雪氷学への応用">高山生態学、雪氷学への応用</h2>
 <p>ここでは写真のRGB値をそのまま用いましたが、 写真を残雪の有無や植生ごとに塗り分けた画像に変換した後に<code>alproj</code>を用いて地理座標を付与することで、残雪マップや植生図を得ることもできます。これによって、例えば山小屋設置のウェブカメラの画像等を用いて残雪や紅葉の様子を地理情報として取得し、他の地理情報と組み合わせて解析を行うことができるようになります！</p>
 
@@ -411,13 +408,13 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 			<nav class="nav tags">
 				<ul class="tags">
 					
-					<li><a href="/tags/%E5%B1%B1%E5%B2%B3">山岳</a></li>
+					<li><a href="../../tags/%E5%B1%B1%E5%B2%B3">山岳</a></li>
 					
-					<li><a href="/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3">コンピュータビジョン</a></li>
+					<li><a href="../../tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3">コンピュータビジョン</a></li>
 					
-					<li><a href="/tags/gis">GIS</a></li>
+					<li><a href="../../tags/gis">GIS</a></li>
 					
-					<li><a href="/tags/%E7%94%9F%E6%85%8B%E5%AD%A6">生態学</a></li>
+					<li><a href="../../tags/%E7%94%9F%E6%85%8B%E5%AD%A6">生態学</a></li>
 					
 				</ul>
 			</nav>
@@ -428,10 +425,8 @@ $$ \begin{bmatrix} x&rsquo;&rsquo; \\ y&rsquo;&rsquo; \end{bmatrix} = \begin{bma
 </main>
 <footer>
 <hr><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" title="Facebook"><i data-feather="facebook"></i></a>|⚡️
-	2023  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+	2025  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
 </footer>
-
-
 <script>
       feather.replace()
 </script>

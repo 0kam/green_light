@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html><head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=443&amp;path=blog/livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>RaspberryPi 5のセットアップ - green light</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="RaspberryPi 5のセットアップ" />
+<meta property="og:description" content="はじめに RaspberryPi5（RPi5）がついに日本でも発売されましたね！ バッテリーでバックアップ可能なRealTimeClock(RTC)やUART用コネクタ、独自開発のI/Oチップ &ldquo;RP1&rdquo; 等の採用等、RPi5にはRPi4にはない特徴がいく" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0kam.net/blog/posts/rpi5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-28T11:03:50+09:00" />
+<meta property="article:modified_time" content="2024-02-28T11:03:50+09:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="RaspberryPi 5のセットアップ"/>
+<meta name="twitter:description" content="はじめに RaspberryPi5（RPi5）がついに日本でも発売されましたね！ バッテリーでバックアップ可能なRealTimeClock(RTC)やUART用コネクタ、独自開発のI/Oチップ &ldquo;RP1&rdquo; 等の採用等、RPi5にはRPi4にはない特徴がいく"/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://0kam.net/blog/css/main.css" /><link rel="stylesheet" type="text/css" href="https://0kam.net/blog/css/dark.css" media="(prefers-color-scheme: dark)" />
+</head>
+
+<head>
+    
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://0kam.net/blog/">green light</a>
+	</div>
+	<nav>
+		
+		<a href="../../">Home</a>
+		
+		<a href="../../posts">All posts</a>
+		
+		<a href="../../about">About</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">RaspberryPi 5のセットアップ</h1>
+			<div class="meta">Posted on Feb 28, 2024</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="はじめに">はじめに</h2>
+<p>RaspberryPi5（RPi5）がついに日本でも発売されましたね！
+バッテリーでバックアップ可能なRealTimeClock(RTC)やUART用コネクタ、独自開発のI/Oチップ &ldquo;RP1&rdquo; 等の採用等、RPi5にはRPi4にはない特徴がいくつかあります。この記事では、RPi5のセットアップを行いながらこれらの新機能を試してみたいと思います。</p>
+<h2 id="動作環境">動作環境</h2>
+<p><strong>OS</strong><br>
+RaspberryPiOS Lite (64bit) Debian bookworm<br>
+初回起動時にユーザー名とパスワードを入力<br>
+<code>raspi-config</code>でシリアル通信を有効化</p>
+<p><strong>作業に使ったノートPC</strong> <br>
+Regolith Linux (Ubuntu 21.10)</p>
+<h2 id="uart">UART</h2>
+<p>従来のラズパイでもGPIO上に割り当てられたUARTピンを使ったシリアル通信は可能でしたが、RPi5ではGPIOから独立したUARTコネクタが用意されています。<br>
+（参考：<a href="https://www.raspberrypi.com/documentation/computers/raspberry-pi-5.html#uart-connector">公式ドキュメント</a>）<br>
+ドキュメントには<a href="https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html">公式のデバッグプローブ</a>の使用例が掲載されていますが、
+当然3.3V系のUSBシリアル変換モジュールであれば何でも使うことができます。今回は秋月電子通商の<a href="https://akizukidenshi.com/catalog/g/g108461/">FT234X 超小型USBシリアル変換モジュール</a>を使ってみました。<br>
+ピンアウトは下図のようになっており、3ピンのJST-SHコネクタ（1.0 mmピッチ）を使って接続できます。SHコネクタの圧着は圧着工具がないとできないため、
+<a href="https://www.sengoku.co.jp/mod/sgk_cart/search.php?cid=4283">千石電商</a>等でケーブル付きのものを買うと便利です。</p>
+<p><img src="../../images/rpi5/uart.png" alt=""></p>
+<p>ノートPCとUSBシリアル変換モジュール、ラズパイのUARTコネクタを接続し、ノートPC上で<code>minicom -D /dev/ttyUSB0</code>を実行するとラズパイのシリアルコンソールにアクセスすることができます。デフォルトのボーレートは115200です。</p>
+<p><img src="../../images/rpi5/serial_console.png" alt=""></p>
+<p>PCからラズパイへのアクセスにはSSHを使うことのほうが多い印象ですが、
+ネットワーク設定の要らないUART接続も気軽で便利です。
+また、ラズパイが突然起動しなくなり、SSHもできないときにブート時の出力を見ることができる、というメリットもあります。</p>
+<h2 id="real-time-clock-rtc">Real Time Clock (RTC)</h2>
+<p>RPi5 は内蔵のリアルタイムクロック(RTC)を搭載しています。 RPi5の<code>BAT</code>と書かれた2ピンコネクタにバッテリーを接続することで、ラズパイに電源が供給されていないときにもRTCをバックアップし、時刻保持やアラームによる起動をおこなうことができます。公式のバッテリーにはパナソニック製のML2020リチウム二次電池が使われていますが、執筆時点では入手できなかったため、代替として <a href="https://www.google.co.jp/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%A4%96%E7%A5%9E%E7%94%B0%EF%BC%91%E2%88%92%EF%BC%91%EF%BC%90%E2%88%92%EF%BC%91%EF%BC%91+%E7%A8%B2%E9%9B%BB%E6%A9%9F%EF%BC%88%E6%A0%AA%EF%BC%89&amp;hl=ja&amp;ie=UTF8&amp;ll=35.698771,139.770856&amp;spn=0.007946,0.016512&amp;sll=35.698754,139.77077&amp;sspn=0.007946,0.016512&amp;oq=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%A4%96%E7%A5%9E%E7%94%B01-10-11%E3%80%80%E7%A8%B2&amp;brcurrent=3,0x60188c1d19d478ff:0x8738b18b0465d817,0&amp;hq=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%A4%96%E7%A5%9E%E7%94%B0%EF%BC%91%E2%88%92%EF%BC%91%EF%BC%90%E2%88%92%EF%BC%91%EF%BC%91+%E7%A8%B2%E9%9B%BB%E6%A9%9F%EF%BC%88%E6%A0%AA%EF%BC%89&amp;t=m&amp;z=17">秋葉原の稲電気</a> で購入したML2032電池を使用しました。マイコン類のRTCバックアップにはCRシリーズのようなコイン型の一次電池が使われることが多いですが、公式ドキュメントでは、RPi5のRTCは消費電力が大きいため二次電池の使用が推奨されています。</p>
+<p>電池は2ピンのJST SHコネクターで下図のように接続します。
+<img src="../../images/rpi5/rtc.png" alt=""></p>
+<p>今回はML2032用のバッテリーケースの<a href="https://www.printables.com/model/763228-ml2032-coin-battery-holder">3Dモデル</a> も設計し、3Dプリンターで印刷して使いました。</p>
+<p><img src="https://media.printables.com/media/prints/763228/images/5946592_4405a640-32fc-4d6b-836e-ac848ddbdb41_f4461794-0f60-4ea4-bd25-681d3daf7f83/thumbs/inside/1280x960/jpg/ml2032_holder.webp" alt=""></p>
+<h3 id="ラズパイ側の設定">ラズパイ側の設定</h3>
+<p>デフォルトではRTCバックアップバッテリーの充電は無効化されているため、有効化する必要があります。
+<code>/boot/firmware/config.txt</code>に以下を追記し、再起動すると充電が有効化されます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>dtparam=rtc_bbat_vchg=3000000
+</span></span></code></pre></div><p>また、シャットダウン時の待機電力を減らす省電力モードと、RTCからのwake alarmを有効化します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>sudo -E rpi-eeprom-config --edit
+</span></span></code></pre></div><p>エディタが開かれるので、以下を書き込みます。POWER_OFF_ON_HALT にデフォルトで0が入っている場合は書き換えます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>POWER_OFF_ON_HALT=1 
+</span></span><span style="display:flex;"><span>WAKE_ON_GPIO=0
+</span></span></code></pre></div><h3 id="ユースケース間欠動作">ユースケース：間欠動作</h3>
+<p>RTCの使用例として、毎日決まった時刻に起動・シャットダウンする間欠動作を実装してみます。例えば、夜間にだけラズパイを動かしたいときに昼の間は寝かせておくことで消費電力を大幅に削減できます。<br>
+これは、「毎日決まった時刻に、アラームをかけてシャットダウンする」ことで実現可能です。以下のシェルスクリプトのように、<code>/sys/class/rtc/rtc0/wakealarm</code>へ次回起動する時刻（UNIX時）を投げておくと、指定の時刻にラズパイを自動起動することができます。この例では10時間半のアラームをかけてからシャットダウンしています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>date &#34;+%s&#34; -d &#34;10 hours 30 minutes&#34; &gt; /sys/class/rtc/rtc0/wakealarm &amp;&amp; /usr/sbin/telinit 0
+</span></span></code></pre></div><p>ここで、このRTCアラームを<code>cron</code>で定時に実行すれば、間欠動作ができます。例えば下の例では、毎日6:30にアラームをかけてシャットダウンしています。この作業にはroot権限が必要なため、<code>sudo crontab -u root -e</code>としてroot権限でcrontabを作成します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>30 6 * * * /bin/bash /home/pi/alarm.sh
+</span></span></code></pre></div><p>これによって、上の例ではラズパイは毎日6:30にシャットダウンし、それから10時間半後の17:00にRTCアラームで自動起動することができます。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="../../tags/raspberrypi">RaspberryPi</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" title="Facebook"><i data-feather="facebook"></i></a>|⚡️
+	2025  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

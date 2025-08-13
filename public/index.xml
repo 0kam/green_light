@@ -2,56 +2,68 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>green light</title>
-    <link>https://green-light.netlify.app/</link>
+    <link>https://0kam.net/blog/</link>
     <description>Recent content on green light</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Wed, 30 Aug 2023 11:03:50 +0900</lastBuildDate><atom:link href="https://green-light.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Feb 2025 07:36:50 +0900</lastBuildDate>
+    <atom:link href="https://0kam.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shutil.make_archive()が止まらない</title>
+      <link>https://0kam.net/blog/posts/make_archive/</link>
+      <pubDate>Wed, 12 Feb 2025 07:36:50 +0900</pubDate>
+      <guid>https://0kam.net/blog/posts/make_archive/</guid>
+      <description>事の発端 最近、自分の作った画像解析ソフトウェアをStreamlitでWebアプリケーション化して、研究所のプログラミングに明るくないメンバーに使ってもらっています。Streamlitは（簡単なものなら）かなり簡単に作れるため、プロトタイピン</description>
+    </item>
+    <item>
+      <title>タイル型ウィンドウマネージャ（Hyprland）のすゝめ</title>
+      <link>https://0kam.net/blog/posts/arch_hyprland/</link>
+      <pubDate>Wed, 22 May 2024 23:44:30 +0900</pubDate>
+      <guid>https://0kam.net/blog/posts/arch_hyprland/</guid>
+      <description>はじめに I use arch, btw&amp;hellip; https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/ 5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更</description>
+    </item>
+    <item>
+      <title>RaspberryPi 5のセットアップ</title>
+      <link>https://0kam.net/blog/posts/rpi5/</link>
+      <pubDate>Wed, 28 Feb 2024 11:03:50 +0900</pubDate>
+      <guid>https://0kam.net/blog/posts/rpi5/</guid>
+      <description>はじめに RaspberryPi5（RPi5）がついに日本でも発売されましたね！ バッテリーでバックアップ可能なRealTimeClock(RTC)やUART用コネクタ、独自開発のI/Oチップ &amp;ldquo;RP1&amp;rdquo; 等の採用等、RPi5にはRPi4にはない特徴がいく</description>
+    </item>
     <item>
       <title>Anycubic KobraNeo の改造</title>
-      <link>https://green-light.netlify.app/posts/kobraneo/</link>
+      <link>https://0kam.net/blog/posts/kobraneo/</link>
       <pubDate>Wed, 30 Aug 2023 11:03:50 +0900</pubDate>
-      
-      <guid>https://green-light.netlify.app/posts/kobraneo/</guid>
+      <guid>https://0kam.net/blog/posts/kobraneo/</guid>
       <description>はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合</description>
     </item>
-    
     <item>
       <title>About</title>
-      <link>https://green-light.netlify.app/about/</link>
+      <link>https://0kam.net/blog/about/</link>
       <pubDate>Thu, 07 Jul 2022 22:49:30 +0900</pubDate>
-      
-      <guid>https://green-light.netlify.app/about/</guid>
-      <description>About Me 岡本遼太郎 Career 2016年3月 東京都立戸山高等学校卒業 2020年3月 筑波大学生物学類卒業 2022年3月 筑波大学大学院生物学学位プログラム博士前期課程修了 2022年4月〜現在 筑波大学大学院生物学学位プログラム博士後期課程在学 2020年4月〜現</description>
+      <guid>https://0kam.net/blog/about/</guid>
+      <description>About Me 岡本遼太郎 Ryotaro Okamoto Career 2016年3月 東京都立戸山高等学校卒業 2020年3月 筑波大学生物学類卒業 2022年3月 筑波大学大学院生物学学位プログラム博士前期課程修了（修士（理学）） 2025年3月 筑波大学大学院生物学学位プログラム博士後期課程修了（博</description>
     </item>
-    
     <item>
       <title>山岳風景写真地理情報化パッケージ`alproj`の使い方</title>
-      <link>https://green-light.netlify.app/posts/usage_of_alproj/</link>
+      <link>https://0kam.net/blog/posts/usage_of_alproj/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      
-      <guid>https://green-light.netlify.app/posts/usage_of_alproj/</guid>
+      <guid>https://0kam.net/blog/posts/usage_of_alproj/</guid>
       <description>alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮</description>
     </item>
-    
     <item>
       <title>Rで青空文庫のテキストを著者ごとに取得する</title>
-      <link>https://green-light.netlify.app/posts/aozora/</link>
+      <link>https://0kam.net/blog/posts/aozora/</link>
       <pubDate>Mon, 01 Jun 2020 12:06:46 +0900</pubDate>
-      
-      <guid>https://green-light.netlify.app/posts/aozora/</guid>
+      <guid>https://0kam.net/blog/posts/aozora/</guid>
       <description>はじめに Word2VecやVAEを使ったテキスト潜在意味空間構築について興味を持ち始めました。 ここでは手始めにRのWebスクレイピングパッケージrvestを使って青空文庫のテキストを、著者ごとに一気にダウンロードし、ルビの削除などの下処理を</description>
     </item>
-    
     <item>
       <title>ユクスキュルの環世界とオートマトンへの実装</title>
-      <link>https://green-light.netlify.app/posts/umwelt/</link>
+      <link>https://0kam.net/blog/posts/umwelt/</link>
       <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
-      
-      <guid>https://green-light.netlify.app/posts/umwelt/</guid>
+      <guid>https://0kam.net/blog/posts/umwelt/</guid>
       <description>20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を</description>
     </item>
-    
   </channel>
 </rss>
