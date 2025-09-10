@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ベルクソン on green light</title>
-    <link>https://0kam.net/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</link>
+    <link>http://localhost:1313/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</link>
     <description>Recent content in ベルクソン on green light</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
     <lastBuildDate>Sat, 23 May 2020 18:50:38 +0900</lastBuildDate>
-    <atom:link href="https://0kam.net/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ユクスキュルの環世界とオートマトンへの実装</title>
-      <link>https://0kam.net/blog/posts/umwelt/</link>
+      <link>http://localhost:1313/blog/posts/umwelt/</link>
       <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/umwelt/</guid>
-      <description>20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を</description>
+      <guid>http://localhost:1313/blog/posts/umwelt/</guid>
+      <description>&lt;p&gt;20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を考える上では非常に重要な提言のように思える。この文章では環世界の考えと背景を概観し、人工生命において「基礎的環世界」を実装しようとした研究例を紹介する。さらには、カント観念論という強大な背景がもたらす科学者にとっての受け入れがたさを、環世界をベルクソンの認識論のもとで捉え直すことによって解消できないか模索する。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

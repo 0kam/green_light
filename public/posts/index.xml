@@ -2,61 +2,68 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on green light</title>
-    <link>https://0kam.net/blog/posts/</link>
+    <link>http://localhost:1313/blog/posts/</link>
     <description>Recent content in Posts on green light</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Wed, 12 Feb 2025 07:36:50 +0900</lastBuildDate>
-    <atom:link href="https://0kam.net/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Jul 2025 06:30:30 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SongMeter Micro2のバッテリー増設とソーラー化</title>
+      <link>http://localhost:1313/blog/posts/songmeter_extra_battery/</link>
+      <pubDate>Thu, 31 Jul 2025 06:30:30 +0900</pubDate>
+      <guid>http://localhost:1313/blog/posts/songmeter_extra_battery/</guid>
+      <description>&lt;img src=../images/songmeter/7e310b8d-08b2-4cf1-8328-cdcfaaf03035.png height=300&gt;&#xA;&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;鳥類やコウモリ、カエル、セミやコオロギなど、音を発する生き物は数多くいます。最近では、機械学習による鳴き声の自動判別手法の発展もあって、環境音を通して生態系のさまざまな側面（多様性や季節変化、行動など）を調べる音響生態学という分野ができつつあります。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>shutil.make_archive()が止まらない</title>
-      <link>https://0kam.net/blog/posts/make_archive/</link>
+      <link>http://localhost:1313/blog/posts/make_archive/</link>
       <pubDate>Wed, 12 Feb 2025 07:36:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/make_archive/</guid>
-      <description>事の発端 最近、自分の作った画像解析ソフトウェアをStreamlitでWebアプリケーション化して、研究所のプログラミングに明るくないメンバーに使ってもらっています。Streamlitは（簡単なものなら）かなり簡単に作れるため、プロトタイピン</description>
+      <guid>http://localhost:1313/blog/posts/make_archive/</guid>
+      <description>&lt;h2 id=&#34;事の発端&#34;&gt;事の発端&lt;/h2&gt;&#xA;&lt;p&gt;最近、自分の作った画像解析ソフトウェアを&lt;a href=&#34;https://streamlit.io/&#34;&gt;Streamlit&lt;/a&gt;でWebアプリケーション化して、研究所のプログラミングに明るくないメンバーに使ってもらっています。Streamlitは（簡単なものなら）かなり簡単に作れるため、プロトタイピングに大変便利ですね！しかし、今日ユーザーから、いつまで経っても処理が終わらない、という報告を受けました。ログを見ると、&lt;code&gt;shutil.make_archive()&lt;/code&gt;が&lt;code&gt;No space left on device&lt;/code&gt;とだけ言い残して死んでいます。あれ、ホストしてるマシンはSSDのスペースまだかなり余っていたはずだけど、と思って&lt;code&gt;df&lt;/code&gt;コマンドを叩いてみると、&lt;code&gt;/&lt;/code&gt;以下の使用率が100%近くなっていました。&lt;/p&gt;</description>
     </item>
     <item>
       <title>タイル型ウィンドウマネージャ（Hyprland）のすゝめ</title>
-      <link>https://0kam.net/blog/posts/arch_hyprland/</link>
+      <link>http://localhost:1313/blog/posts/arch_hyprland/</link>
       <pubDate>Wed, 22 May 2024 23:44:30 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/arch_hyprland/</guid>
-      <description>はじめに I use arch, btw&amp;hellip; https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/ 5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更</description>
+      <guid>http://localhost:1313/blog/posts/arch_hyprland/</guid>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/arch_hyprland/meme.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;I use arch, btw&amp;hellip;&lt;br&gt;&#xA;&lt;a href=&#34;https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/&#34;&gt;https://www.reddit.com/r/linuxmemes/comments/9xgfxq/why_i_use_arch_btw/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;5年前に大学の研究室に入った際、指導教員から「ウチはWindows禁止だから」という衝撃的な宣告を受けました。セキュリティに穴があるからWindows PCはラボのネットワークにつないではいけないというのです。かと言って今更Macを買うお金も無いし、どうしようと思った矢先に、指導教員の「普段使いのガジェットをLinuxにすれば、自ずとLinuxが使えるようになる」という言葉を思い出しました。当時使っていたノートPCがWindows10非対応の古いマシンだったことも相まって、大学4年生の自分はLinuxへの全面移行を決意しました。&lt;br&gt;&#xA;いざ使い始めてみると、WindowsやOSXと違ってオープンで多様なディストリビューションやデスクトップ環境が存在するLinuxは、飽きっぽい自分の性分に大変合っており、半年に1回くらいの頻度で様々なディストリビューションを点々とする生活を送っています。&lt;br&gt;&#xA;（Mint -&amp;gt; Ubuntu -&amp;gt; Manjaro -&amp;gt; Arch -&amp;gt; OpenSUSE -&amp;gt; Endeavour -&amp;gt; Regolith -&amp;gt; Arch）&lt;/p&gt;</description>
     </item>
     <item>
       <title>RaspberryPi 5のセットアップ</title>
-      <link>https://0kam.net/blog/posts/rpi5/</link>
+      <link>http://localhost:1313/blog/posts/rpi5/</link>
       <pubDate>Wed, 28 Feb 2024 11:03:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/rpi5/</guid>
-      <description>はじめに RaspberryPi5（RPi5）がついに日本でも発売されましたね！ バッテリーでバックアップ可能なRealTimeClock(RTC)やUART用コネクタ、独自開発のI/Oチップ &amp;ldquo;RP1&amp;rdquo; 等の採用等、RPi5にはRPi4にはない特徴がいく</description>
+      <guid>http://localhost:1313/blog/posts/rpi5/</guid>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;RaspberryPi5（RPi5）がついに日本でも発売されましたね！&#xA;バッテリーでバックアップ可能なRealTimeClock(RTC)やUART用コネクタ、独自開発のI/Oチップ &amp;ldquo;RP1&amp;rdquo; 等の採用等、RPi5にはRPi4にはない特徴がいくつかあります。この記事では、RPi5のセットアップを行いながらこれらの新機能を試してみたいと思います。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Anycubic KobraNeo の改造</title>
-      <link>https://0kam.net/blog/posts/kobraneo/</link>
+      <link>http://localhost:1313/blog/posts/kobraneo/</link>
       <pubDate>Wed, 30 Aug 2023 11:03:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/kobraneo/</guid>
-      <description>はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合</description>
+      <guid>http://localhost:1313/blog/posts/kobraneo/</guid>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;最近、研究で3Dプリンターを使うことが多くなりました。&#xA;野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。&#xA;これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合わせて頑張っていたのですが、&#xA;3Dプリンターで自由に作れるととても便利です。3DCADも最近はかなり使いやすくなってきたらしく、&#xA;それほど勉強しないでもある程度のものは作れます。私はLinuxユーザーなのでクラウドで動いてブラウザ上でいじれる&lt;a href=&#34;https://www.onshape.com/ja/&#34;&gt;Onshape&lt;/a&gt;&#xA;を使っていますが、かなりいい感じです。&lt;/p&gt;</description>
     </item>
     <item>
       <title>山岳風景写真地理情報化パッケージ`alproj`の使い方</title>
-      <link>https://0kam.net/blog/posts/usage_of_alproj/</link>
+      <link>http://localhost:1313/blog/posts/usage_of_alproj/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/usage_of_alproj/</guid>
-      <description>alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮</description>
+      <guid>http://localhost:1313/blog/posts/usage_of_alproj/</guid>
+      <description>&lt;h2 id=&#34;alprojの概要&#34;&gt;&lt;code&gt;alproj&lt;/code&gt;の概要&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;alproj&lt;/code&gt;は山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。&#xA;これを既存の画像解析と組み合わせることによって、例えば登山者が撮影した風景写真から残雪域や植生の地図を作成することができます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Rで青空文庫のテキストを著者ごとに取得する</title>
-      <link>https://0kam.net/blog/posts/aozora/</link>
+      <link>http://localhost:1313/blog/posts/aozora/</link>
       <pubDate>Mon, 01 Jun 2020 12:06:46 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/aozora/</guid>
-      <description>はじめに Word2VecやVAEを使ったテキスト潜在意味空間構築について興味を持ち始めました。 ここでは手始めにRのWebスクレイピングパッケージrvestを使って青空文庫のテキストを、著者ごとに一気にダウンロードし、ルビの削除などの下処理を</description>
+      <guid>http://localhost:1313/blog/posts/aozora/</guid>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;Word2VecやVAEを使ったテキスト潜在意味空間構築について興味を持ち始めました。&lt;/p&gt;&#xA;&lt;p&gt;ここでは手始めにRのWebスクレイピングパッケージ&lt;a href=&#34;https://rvest.tidyverse.org/&#34;&gt;rvest&lt;/a&gt;を使って青空文庫のテキストを、著者ごとに一気にダウンロードし、ルビの削除などの下処理をします。&lt;/p&gt;&#xA;&lt;p&gt;ZIPファイルのダウンロードからテキストファイルの保存までは、&lt;a href=&#34;http://rmecab.jp/wiki/index.php?R%A4%CE%C8%F7%CB%BA%CF%BF&#34;&gt;RMeCabのサポートページの関数&lt;/a&gt;を流用しています。&lt;/p&gt;&#xA;&lt;p&gt;aozora_all()は作者別作品リストのURLを引数に取って、ワーキングディレクトリ直下に作品別のテキストファイルを、NORUBYディレクトリ内にルビを削除したテキストファイルを保存します。&lt;/p&gt;</description>
     </item>
     <item>
       <title>ユクスキュルの環世界とオートマトンへの実装</title>
-      <link>https://0kam.net/blog/posts/umwelt/</link>
+      <link>http://localhost:1313/blog/posts/umwelt/</link>
       <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/umwelt/</guid>
-      <description>20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を</description>
+      <guid>http://localhost:1313/blog/posts/umwelt/</guid>
+      <description>&lt;p&gt;20世紀前半の生物学者・哲学者ユクスキュルはカント観念論の生物学への応用として、生物が生きる世界は、彼ら当人にとっての世界に他ならないという主張を立てた。この「主体的な生態学」は一見突飛に見えるが、例えば「完全にローカルな人工生命モデル」を考える上では非常に重要な提言のように思える。この文章では環世界の考えと背景を概観し、人工生命において「基礎的環世界」を実装しようとした研究例を紹介する。さらには、カント観念論という強大な背景がもたらす科学者にとっての受け入れがたさを、環世界をベルクソンの認識論のもとで捉え直すことによって解消できないか模索する。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

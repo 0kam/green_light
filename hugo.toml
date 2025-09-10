@@ -15,9 +15,20 @@ summaryLength = 120 # サマリーの長さを120単語にする
 
 [params]
 	mode="auto"
+	useCDN=true
 	featherIconsCDN=true
 	subtitle = "okamoto's tech blog"
     mathjaxStyle = "mathjax-style.css"
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/0kam"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://x.com/okamoto_ryotaro"
 
 [[params.social]]
 name = "Facebook"
@@ -38,3 +49,11 @@ weight = 2
 name = "About"
 url = "/about"
 weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
+
+[markup.goldmark.renderer]
+unsafe = true

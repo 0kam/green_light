@@ -2,88 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on green light</title>
-    <link>https://0kam.net/blog/tags/</link>
+    <link>http://localhost:1313/blog/tags/</link>
     <description>Recent content in Tags on green light</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Wed, 12 Feb 2025 07:36:50 +0900</lastBuildDate>
-    <atom:link href="https://0kam.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Jul 2025 06:30:30 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Songmeter</title>
+      <link>http://localhost:1313/blog/tags/songmeter/</link>
+      <pubDate>Thu, 31 Jul 2025 06:30:30 +0900</pubDate>
+      <guid>http://localhost:1313/blog/tags/songmeter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>音響生態学</title>
+      <link>http://localhost:1313/blog/tags/%E9%9F%B3%E9%9F%BF%E7%94%9F%E6%85%8B%E5%AD%A6/</link>
+      <pubDate>Thu, 31 Jul 2025 06:30:30 +0900</pubDate>
+      <guid>http://localhost:1313/blog/tags/%E9%9F%B3%E9%9F%BF%E7%94%9F%E6%85%8B%E5%AD%A6/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Linux</title>
-      <link>https://0kam.net/blog/tags/linux/</link>
+      <link>http://localhost:1313/blog/tags/linux/</link>
       <pubDate>Wed, 12 Feb 2025 07:36:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/linux/</guid>
+      <guid>http://localhost:1313/blog/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://0kam.net/blog/tags/python/</link>
+      <link>http://localhost:1313/blog/tags/python/</link>
       <pubDate>Wed, 12 Feb 2025 07:36:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/python/</guid>
+      <guid>http://localhost:1313/blog/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>RaspberryPi</title>
-      <link>https://0kam.net/blog/tags/raspberrypi/</link>
+      <link>http://localhost:1313/blog/tags/raspberrypi/</link>
       <pubDate>Wed, 28 Feb 2024 11:03:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/raspberrypi/</guid>
+      <guid>http://localhost:1313/blog/tags/raspberrypi/</guid>
       <description></description>
     </item>
     <item>
       <title>3Dプリンター</title>
-      <link>https://0kam.net/blog/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/</link>
+      <link>http://localhost:1313/blog/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/</link>
       <pubDate>Wed, 30 Aug 2023 11:03:50 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/</guid>
+      <guid>http://localhost:1313/blog/tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC/</guid>
       <description></description>
     </item>
     <item>
       <title>GIS</title>
-      <link>https://0kam.net/blog/tags/gis/</link>
+      <link>http://localhost:1313/blog/tags/gis/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/gis/</guid>
+      <guid>http://localhost:1313/blog/tags/gis/</guid>
       <description></description>
     </item>
     <item>
       <title>コンピュータビジョン</title>
-      <link>https://0kam.net/blog/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</link>
+      <link>http://localhost:1313/blog/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</guid>
+      <guid>http://localhost:1313/blog/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</guid>
       <description></description>
     </item>
     <item>
       <title>山岳</title>
-      <link>https://0kam.net/blog/tags/%E5%B1%B1%E5%B2%B3/</link>
+      <link>http://localhost:1313/blog/tags/%E5%B1%B1%E5%B2%B3/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/%E5%B1%B1%E5%B2%B3/</guid>
+      <guid>http://localhost:1313/blog/tags/%E5%B1%B1%E5%B2%B3/</guid>
       <description></description>
     </item>
     <item>
       <title>生態学</title>
-      <link>https://0kam.net/blog/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</link>
+      <link>http://localhost:1313/blog/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</guid>
+      <guid>http://localhost:1313/blog/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</guid>
       <description></description>
     </item>
     <item>
       <title>ベルクソン</title>
-      <link>https://0kam.net/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</link>
+      <link>http://localhost:1313/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</link>
       <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</guid>
+      <guid>http://localhost:1313/blog/tags/%E3%83%99%E3%83%AB%E3%82%AF%E3%82%BD%E3%83%B3/</guid>
       <description></description>
     </item>
     <item>
       <title>ユクスキュル</title>
-      <link>https://0kam.net/blog/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</link>
+      <link>http://localhost:1313/blog/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</link>
       <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</guid>
+      <guid>http://localhost:1313/blog/tags/%E3%83%A6%E3%82%AF%E3%82%B9%E3%82%AD%E3%83%A5%E3%83%AB/</guid>
       <description></description>
     </item>
     <item>
       <title>人工生命</title>
-      <link>https://0kam.net/blog/tags/%E4%BA%BA%E5%B7%A5%E7%94%9F%E5%91%BD/</link>
+      <link>http://localhost:1313/blog/tags/%E4%BA%BA%E5%B7%A5%E7%94%9F%E5%91%BD/</link>
       <pubDate>Sat, 23 May 2020 18:50:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/tags/%E4%BA%BA%E5%B7%A5%E7%94%9F%E5%91%BD/</guid>
+      <guid>http://localhost:1313/blog/tags/%E4%BA%BA%E5%B7%A5%E7%94%9F%E5%91%BD/</guid>
       <description></description>
     </item>
   </channel>

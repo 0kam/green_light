@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html><head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=443&amp;path=blog/livereload" data-no-instant defer></script>
+<html><head lang="en"><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Anycubic KobraNeo の改造 - green light</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:title" content="Anycubic KobraNeo の改造" />
-<meta property="og:description" content="はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://0kam.net/blog/posts/kobraneo/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-08-30T11:03:50+09:00" />
-<meta property="article:modified_time" content="2023-08-30T11:03:50+09:00" />
+	<meta name="description" content="はじめに
+最近、研究で3Dプリンターを使うことが多くなりました。
+野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。
+これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合わせて頑張っていたのですが、
+3Dプリンターで自由に作れるととても便利です。3DCADも最近はかなり使いやすくなってきたらしく、
+それほど勉強しないでもある程度のものは作れます。私はLinuxユーザーなのでクラウドで動いてブラウザ上でいじれるOnshape
+を使っていますが、かなりいい感じです。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="http://localhost:1313/blog/posts/kobraneo/">
+  <meta property="og:site_name" content="green light">
+  <meta property="og:title" content="Anycubic KobraNeo の改造">
+  <meta property="og:description" content="はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合わせて頑張っていたのですが、 3Dプリンターで自由に作れるととても便利です。3DCADも最近はかなり使いやすくなってきたらしく、 それほど勉強しないでもある程度のものは作れます。私はLinuxユーザーなのでクラウドで動いてブラウザ上でいじれるOnshape を使っていますが、かなりいい感じです。">
+  <meta property="og:locale" content="jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-08-30T11:03:50+09:00">
+    <meta property="article:modified_time" content="2023-08-30T11:03:50+09:00">
+    <meta property="article:tag" content="3Dプリンター">
+    <meta property="article:tag" content="RaspberryPi">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Anycubic KobraNeo の改造"/>
-<meta name="twitter:description" content="はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合"/>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" media="screen" href="https://0kam.net/blog/css/main.css" /><link rel="stylesheet" type="text/css" href="https://0kam.net/blog/css/dark.css" media="(prefers-color-scheme: dark)" />
-</head>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Anycubic KobraNeo の改造">
+  <meta name="twitter:description" content="はじめに 最近、研究で3Dプリンターを使うことが多くなりました。 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合わせて頑張っていたのですが、 3Dプリンターで自由に作れるととても便利です。3DCADも最近はかなり使いやすくなってきたらしく、 それほど勉強しないでもある程度のものは作れます。私はLinuxユーザーなのでクラウドで動いてブラウザ上でいじれるOnshape を使っていますが、かなりいい感じです。">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
-<head>
-    
 	
-</head>
-<body>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/blog/css/main.4e31546101ee9728613071f3410cf21f481e1a76df22c2dda8457a80d04dde26.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/blog/css/dark.deccb94d40bc8feabc208f71c6bb0225a06ff8f1760a7b9091a7901ab245516c.css" media="(prefers-color-scheme: dark)"  />
+</head><body>
         <div class="content"><header>
 	<div class="main">
-		<a href="https://0kam.net/blog/">green light</a>
+		<a href="http://localhost:1313/">green light</a>
 	</div>
 	<nav>
 		
@@ -34,19 +45,23 @@
 		
 		<a href="../../about">About</a>
 		
+		<a href="../../tags">Tags</a>
+		
+		
 	</nav>
 </header>
-
 <main>
-	<article>
-		<div class="title">
-			<h1 class="title">Anycubic KobraNeo の改造</h1>
-			<div class="meta">Posted on Aug 30, 2023</div>
-		</div>
-		
-
-		<section class="body">
-			<h2 id="はじめに">はじめに</h2>
+  <article>
+    <div class="post-container">
+      
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">Anycubic KobraNeo の改造</h1>
+          <div class="meta">Posted on Aug 30, 2023</div>
+        </div>
+        
+        <section class="body">
+          <h2 id="はじめに">はじめに</h2>
 <p>最近、研究で3Dプリンターを使うことが多くなりました。
 野外になにか観測機器を設置しようと思うと、その場に合わせた微妙な形の治具を作る必要に迫られることが多々有ります。
 これまではアルミ板を加工したりホムセンで売ってる既存の治具を組み合わせて頑張っていたのですが、
@@ -70,8 +85,7 @@
 <li><a href="https://www.amazon.co.jp/gp/product/B09BZBZ7BR/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&amp;th=1">リードスクリュー</a></li>
 </ul>
 <blockquote>
-<p>8 mm dia. * 2 mm pitch * 8 mm lead acme lead screw (I think the one you need for full Z height is 350 mm long. Mine looks short because I just used one that I had from an old printer.)`</p>
-</blockquote>
+<p>8 mm dia. * 2 mm pitch * 8 mm lead acme lead screw (I think the one you need for full Z height is 350 mm long. Mine looks short because I just used one that I had from an old printer.)`</p></blockquote>
 <p>と書いてるので、これに合ったものを選びます。切り口の数が4個あるもの（Tr8x8）を選ぶ必要があるので要注意です。</p>
 <ul>
 <li><a href="https://www.amazon.co.jp/Saipor-%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%95%E3%83%88%E3%82%AB%E3%83%97%E3%83%A9-%E3%82%AB%E3%83%97%E3%83%A9%E3%83%BC%E3%82%AB%E3%83%83%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0-17%E3%82%B9%E3%83%86%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC%E3%81%AB%E5%AF%BE%E5%BF%9C-%E7%9B%B4%E5%BE%8419mm%E3%80%81%E9%95%B7%E3%81%9525mm/dp/B07ZMYSYLH/ref=d_pd_sbs_sccl_3_3/358-0704816-9539537?pd_rd_w=6PQiU&amp;content-id=amzn1.sym.4e3fe7e8-7339-4e4f-87be-631ff86daf6e&amp;pf_rd_p=4e3fe7e8-7339-4e4f-87be-631ff86daf6e&amp;pf_rd_r=0RBN2FMENZ5RA4SN52WZ&amp;pd_rd_wg=WO8bv&amp;pd_rd_r=01765439-9cfa-40f2-97ca-8ff26627d29c&amp;pd_rd_i=B07ZMYSYLH&amp;psc=1">モータシャフトカプラー</a></li>
@@ -81,8 +95,7 @@
 <p>2 - M5<em>40 bolts (you can get away with M5</em>35; that was what i had lying around. but the bolt isn&rsquo;t long enough to engage the nyloc part of the nut.)
 6 - M3<em>10 bolts (4 of these goes in the lead nut, 2 goes in the stepper motor bracket and into the stepper motor)
 2 - M3</em>14 bolts (these goes in the motor bracket)
-6 - M3 nuts (4 of these goes on the bolts through the lead nut. 2 of these go inside the motor bracket together with the m3*14 bolts exerts pressure on the gantry post to secure the motor bracket.)</p>
-</blockquote>
+6 - M3 nuts (4 of these goes on the bolts through the lead nut. 2 of these go inside the motor bracket together with the m3*14 bolts exerts pressure on the gantry post to secure the motor bracket.)</p></blockquote>
 <p>を用意します。秋葉原の西川電子部品さんにお世話になりました。</p>
 <h3 id="組み立て">組み立て</h3>
 <p><a href="https://1coderookie.github.io/KobraGoNeoInsights/hardware/mainboard/">KobraGoNeo Insights</a>によると、KobraNeoのメインボードは<code>TriGorillaV_3.0.6</code>で、コネクタの配置は下図のようになっています。
@@ -119,32 +132,46 @@ RaspbianベースのOSで、Klipperのファームウェア、プリンターと
 <p>肝心の造形品質ですが、たしかに表面の滑らかさは上がり、積層痕もかなり目立たなくなりました。また、これまでカクカクしていた動作がなめらかになり、それによって動作音も静かになった印象を受けます。加減速がスムーズでスマートに動くので、見ていて気持ちいいですね。</p>
 <p>加速度センサーをプリントヘッドに取り付けてプリンターの振動を計測することで、それを打ち消すような制御を行うInput Shapingも実装されているということなので、後日試してみようと思います。</p>
 
-		</section>
+        </section>
+        <div class="post-tags">
+          
+          
+          <nav class="nav tags">
+            <ul class="tags">
+              
+              <li><a href="../../tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC">3Dプリンター</a></li>
+              
+              <li><a href="../../tags/raspberrypi">RaspberryPi</a></li>
+              
+            </ul>
+          </nav>
+          
+          
+        </div>
+      </div>
 
-		<div class="post-tags">
-			
-			
-			<nav class="nav tags">
-				<ul class="tags">
-					
-					<li><a href="../../tags/3d%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC">3Dプリンター</a></li>
-					
-					<li><a href="../../tags/raspberrypi">RaspberryPi</a></li>
-					
-				</ul>
-			</nav>
-			
-			
-		</div>
-	</article>
+      
+      
+    </div>
+
+    </article>
 </main>
 <footer>
-<hr><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" title="Facebook"><i data-feather="facebook"></i></a>|⚡️
-	2025  © okamoto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  <div style="display:flex"><a class="soc" href="https://github.com/0kam" rel="me" title="GitHub">
+      <svg class="feather" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+    </a>
+    <a class="border"></a><a class="soc" href="https://x.com/okamoto_ryotaro" rel="me" title="Twitter">
+      <svg class="feather" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </a>
+    <a class="border"></a><a class="soc" href="https://www.facebook.com/profile.php?id=100010006816605" rel="me" title="Facebook">
+      <svg class="feather" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2025  © okamoto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
 </footer>
-<script>
-      feather.replace()
-</script>
 
 </div>
     </body>

@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on green light</title>
-    <link>https://0kam.net/blog/categories/</link>
+    <link>http://localhost:1313/blog/categories/</link>
     <description>Recent content in Categories on green light</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <atom:link href="https://0kam.net/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

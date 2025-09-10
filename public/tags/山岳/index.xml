@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>山岳 on green light</title>
-    <link>https://0kam.net/blog/tags/%E5%B1%B1%E5%B2%B3/</link>
+    <link>http://localhost:1313/blog/tags/%E5%B1%B1%E5%B2%B3/</link>
     <description>Recent content in 山岳 on green light</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
     <lastBuildDate>Mon, 08 Mar 2021 14:57:38 +0900</lastBuildDate>
-    <atom:link href="https://0kam.net/blog/tags/%E5%B1%B1%E5%B2%B3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/%E5%B1%B1%E5%B2%B3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>山岳風景写真地理情報化パッケージ`alproj`の使い方</title>
-      <link>https://0kam.net/blog/posts/usage_of_alproj/</link>
+      <link>http://localhost:1313/blog/posts/usage_of_alproj/</link>
       <pubDate>Mon, 08 Mar 2021 14:57:38 +0900</pubDate>
-      <guid>https://0kam.net/blog/posts/usage_of_alproj/</guid>
-      <description>alprojの概要 alprojは山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。 これを既存の画像解析と組み合わせることによって、例えば登山者が撮</description>
+      <guid>http://localhost:1313/blog/posts/usage_of_alproj/</guid>
+      <description>&lt;h2 id=&#34;alprojの概要&#34;&gt;&lt;code&gt;alproj&lt;/code&gt;の概要&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;alproj&lt;/code&gt;は山岳域で撮影された風景写真を地理情報化（いわゆるオルソ化）し、GISツールを用いた解析に用いることができるようにするPythonパッケージです。&#xA;これを既存の画像解析と組み合わせることによって、例えば登山者が撮影した風景写真から残雪域や植生の地図を作成することができます。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

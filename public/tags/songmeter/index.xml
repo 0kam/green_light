@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Songmeter on green light</title>
+    <link>http://localhost:1313/blog/tags/songmeter/</link>
+    <description>Recent content in Songmeter on green light</description>
+    <generator>Hugo</generator>
+    <language>jp</language>
+    <copyright>© okamoto</copyright>
+    <lastBuildDate>Thu, 31 Jul 2025 06:30:30 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/songmeter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SongMeter Micro2のバッテリー増設とソーラー化</title>
+      <link>http://localhost:1313/blog/posts/songmeter_extra_battery/</link>
+      <pubDate>Thu, 31 Jul 2025 06:30:30 +0900</pubDate>
+      <guid>http://localhost:1313/blog/posts/songmeter_extra_battery/</guid>
+      <description>&lt;img src=../../images/songmeter/7e310b8d-08b2-4cf1-8328-cdcfaaf03035.png height=300&gt;&#xA;&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;鳥類やコウモリ、カエル、セミやコオロギなど、音を発する生き物は数多くいます。最近では、機械学習による鳴き声の自動判別手法の発展もあって、環境音を通して生態系のさまざまな側面（多様性や季節変化、行動など）を調べる音響生態学という分野ができつつあります。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
