@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Thu, 31 Jul 2025 06:30:30 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 19 Nov 2025 06:30:51 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安価な積雪深ロガーの自作</title>
+      <link>http://localhost:1313/blog/posts/snowdepth_logger/</link>
+      <pubDate>Wed, 19 Nov 2025 06:30:51 +0900</pubDate>
+      <guid>http://localhost:1313/blog/posts/snowdepth_logger/</guid>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;積雪量は気候変動を考える上で重要な指標である一方、地形などによって空間的な不均質性が高くなりがちで計測が難しい対象だと言えます。大量に積雪深計をばら撒いてデータをたくさん取れると良いですが、ちゃんとした積雪深計は結構値段が高く（数十万円）、気軽に大量購入はできません。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>SongMeter Micro2のバッテリー増設とソーラー化</title>
       <link>http://localhost:1313/blog/posts/songmeter_extra_battery/</link>

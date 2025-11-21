@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spresense on green light</title>
+    <link>http://localhost:1313/blog/tags/spresense/</link>
+    <description>Recent content in Spresense on green light</description>
+    <generator>Hugo</generator>
+    <language>jp</language>
+    <copyright>© okamoto</copyright>
+    <lastBuildDate>Wed, 19 Nov 2025 06:30:51 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/spresense/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安価な積雪深ロガーの自作</title>
+      <link>http://localhost:1313/blog/posts/snowdepth_logger/</link>
+      <pubDate>Wed, 19 Nov 2025 06:30:51 +0900</pubDate>
+      <guid>http://localhost:1313/blog/posts/snowdepth_logger/</guid>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;積雪量は気候変動を考える上で重要な指標である一方、地形などによって空間的な不均質性が高くなりがちで計測が難しい対象だと言えます。大量に積雪深計をばら撒いてデータをたくさん取れると良いですが、ちゃんとした積雪深計は結構値段が高く（数十万円）、気軽に大量購入はできません。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

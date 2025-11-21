@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>jp</language>
     <copyright>© okamoto</copyright>
-    <lastBuildDate>Thu, 31 Jul 2025 06:30:30 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 19 Nov 2025 06:30:51 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arduino</title>
+      <link>http://localhost:1313/blog/tags/arduino/</link>
+      <pubDate>Wed, 19 Nov 2025 06:30:51 +0900</pubDate>
+      <guid>http://localhost:1313/blog/tags/arduino/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spresense</title>
+      <link>http://localhost:1313/blog/tags/spresense/</link>
+      <pubDate>Wed, 19 Nov 2025 06:30:51 +0900</pubDate>
+      <guid>http://localhost:1313/blog/tags/spresense/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Songmeter</title>
       <link>http://localhost:1313/blog/tags/songmeter/</link>
