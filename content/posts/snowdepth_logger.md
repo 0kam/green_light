@@ -1,7 +1,7 @@
 ---
 title: "安価な積雪深ロガーの自作"
 date: 2025-11-19T06:30:51+09:00
-tags: [Spresense, Arduino]
+tags: [Spresense, Arduino, 山岳, 生態学]
 draft: false
 ---
 ## はじめに

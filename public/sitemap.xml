@@ -20,6 +20,12 @@
     <loc>http://localhost:1313/blog/posts/snowdepth_logger/</loc>
     <lastmod>2025-11-19T06:30:51+09:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/tags/%E5%B1%B1%E5%B2%B3/</loc>
+    <lastmod>2025-11-19T06:30:51+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</loc>
+    <lastmod>2025-11-19T06:30:51+09:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/blog/tags/songmeter/</loc>
     <lastmod>2025-07-31T06:30:30+09:00</lastmod>
   </url><url>
@@ -62,13 +68,7 @@
     <loc>http://localhost:1313/blog/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%93%E3%82%B8%E3%83%A7%E3%83%B3/</loc>
     <lastmod>2021-03-08T14:57:38+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/tags/%E5%B1%B1%E5%B2%B3/</loc>
-    <lastmod>2021-03-08T14:57:38+09:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/posts/usage_of_alproj/</loc>
-    <lastmod>2021-03-08T14:57:38+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/tags/%E7%94%9F%E6%85%8B%E5%AD%A6/</loc>
     <lastmod>2021-03-08T14:57:38+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/posts/aozora/</loc>
