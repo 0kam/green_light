@@ -39,8 +39,9 @@ Ryotaro Okamoto
 - [長期野外録音用マイクロフォンアレイ `ChirpArray`](https://github.com/0kam/ChirpArray)
 - [全天球タイムラプスカメラ `PiSphere`](https://github.com/0kam/PiSphere)
 - [自然地理学特説Ⅱ 授業資料](https://0kam.net/PG2/)  
-    Rを用いてさまざまなリモセン手法を動かしながら学びます。資料は[Quarto](https://quarto.org/)で作成しました。  
-    [Github](https://github.com/0kam/PG2)
+    - Rを用いてさまざまなリモセン手法を動かしながら学びます。  
+    - 資料は[Quarto](https://quarto.org/)で作成しました。  
+    - [Githubリポジトリ](https://github.com/0kam/PG2)
 
 ### Awards
 - 2019年12月 山岳科学学術集会@筑波大学 最優秀ポスター発表賞
