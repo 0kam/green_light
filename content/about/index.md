@@ -33,13 +33,14 @@ Ryotaro Okamoto
 - **Okamoto, R.**, Ide, R. and Oguma, H. (2023), Automatically drawing vegetation classification maps using digital time-lapse cameras in alpine ecosystems. Remote Sens Ecol Conserv. https://doi.org/10.1002/rse2.364  
 - 竹内 やよい, 遠山 弘法, 吉川 徹朗, **岡本 遼太郎**, 井手 玲子, 角谷 拓, 小出 大, 西廣 淳, 小熊 宏之, 日浦 勉, 中静 透, 気候変動時代の生態学： 陸域生態系における「自然を基盤とした解決策」にむけた課題, 日本生態学会誌, 2022, 72 巻, 2 号, p. 109-, 公開日 2022/10/22, Online ISSN 2424-127X, Print ISSN 0021-5007, https://doi.org/10.18960/seitai.72.2_109, https://www.jstage.jst.go.jp/article/seitai/72/2/72_109/_article/-char/ja  
 
-
-
 ### Works
 - [山岳風景写真地理情報化パッケージ`alproj` (Python)](https://github.com/0kam/alproj)
 - [半教師あり物体検出パッケージ`vodet` (Python)](https://github.com/0kam/vodet)
 - [長期野外録音用マイクロフォンアレイ `ChirpArray`](https://github.com/0kam/ChirpArray)
 - [全天球タイムラプスカメラ `PiSphere`](https://github.com/0kam/PiSphere)
+- [自然地理学特説Ⅱ 授業資料](https://0kam.net/PG2/)  
+    Rを用いてさまざまなリモセン手法を動かしながら学びます。資料は[Quarto](https://quarto.org/)で作成しました。  
+    [Github](https://github.com/0kam/PG2)
 
 ### Awards
 - 2019年12月 山岳科学学術集会@筑波大学 最優秀ポスター発表賞
