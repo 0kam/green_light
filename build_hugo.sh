@@ -1,0 +1,1 @@
+hugo --destination /var/www/0kam/blog
