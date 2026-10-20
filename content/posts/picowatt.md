@@ -2,7 +2,7 @@
 title: "Raspberry Pi Pico 2とINA228で消費電力計を自作した（picowatt）"
 date: 2026-10-16T12:30:00+09:00
 tags: [Raspberry Pi Pico, INA228, 電子工作, 消費電力]
-draft: true
+draft: false
 ---
 ## はじめに
 電池で動くロガーを作っていると、「スリープ中に何µA流れているか」「1回の測定で何mAh使うか」を測りたくなります。[積雪深ロガーの最初の記事](/posts/snowdepth_logger/)では、NordicのPower Profiler Kit 2（PPK2）を使ってこれを測りました。

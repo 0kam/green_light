@@ -1,7 +1,7 @@
 ---
 title: "AI論文検索MCPを使ってみる：Consensus・Scholar Gateway・PubMed比較"
 date: 2026-04-28T20:00:00+09:00
-draft: false
+draft: true
 tags: [AI, 研究, 論文検索, MCP, Claude, 音響生態学]
 ---
 
