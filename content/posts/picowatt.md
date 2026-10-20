@@ -54,7 +54,13 @@ INA228もOLEDも、すべてPico 2のI2Cバス（1 MHz）につないでいる�
 uvx picowatt
 ```
 
-GUIで「Connect → Start」を押すと、電圧・電流・電力のグラフがリアルタイムに流れ始めます。コマンドラインで記録する場合は次のようにします。
+GUIで「Connect → Start」を押すと、電圧・電流・電力のグラフがリアルタイムに流れ始めます。「Measure」にチェックを入れると、グラフ上に範囲（緑の帯）が出ます。この範囲をドラッグすると、右のパネルにその区間の平均電圧・平均電流・平均電力と、電力量（Wh）・電荷量（Ah）が表示されます。
+
+![picowattのGUI](/images/picowatt/picowatt_gui.png)
+
+上のスクショは、測定端子に何もつながっていない状態です。そのため、グラフはゼロ付近のノイズだけになっています。
+
+コマンドラインで記録する場合は次のようにします。
 
 ```bash
 uvx --from picowatt picowatt-cli --seconds 10 --csv out.csv
