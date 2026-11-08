@@ -26,6 +26,7 @@ Ryotaro Okamoto
 近年、生態学的データの蓄積と解析手法の高度化によって、データの特性のみから（仮説設定なしに）生態系のメカニズムに迫る「データ駆動生態学」が可能になりつつあります（たとえば [Ushio et al. 2018](https://www.nature.com/articles/nature25504)）。「データ駆動生態学」では従前、観測個体数や環境DNA濃度から推定した個体数量といった生物・生態系の状態を直接表すデータが用いられてきました。私は山小屋に設置されたウェブカメラの映像や、市街地に設置されたIoTマイクの音声などのセンサーデータを用いて「データ駆動生態学」を行うための基盤的な技術開発を行っています。これが可能になれば、調査によって直接生物の個体数量や生理状態を測定することが困難な高山生態系における生物、環境間相互作用や、従来不可能だった極めて高頻度な記録に基づく個体行動レベルでの生物間相互作用など、今まで誰も気が付かなかったような現象を発見することができるのではないかと考えています。最近は、登山者が撮影した写真やSNSへの投稿等を介した「非中心的な」現実世界のデジタル化（ミラーワールド）と生態学との関係や、音響景観（サウンドスケープ）を介した人間、環境、生物間の作用にも興味があります。
 
 ### Papers
+- 井手玲子, 神田健三, **岡本遼太郎**, 鈴木啓助, 小熊宏之. (2026), 穂高岳涸沢における多年性雪渓の59年間（1967～2025年）の面積変動. 日本雪氷学会誌「雪氷」88巻5号（2026年9月）. https://doi.org/10.5331/seppyo.88.5_381  
 - 吉岡明良, **岡本遼太郎**, 大内博文, 趙 在翼, 三田村敏正, 田渕 研, 松木伸浩, 深澤圭太, 小熊宏之. (2025), 自動撮影と深層学習モデルを用いたアカネ属（トンボ目：トンボ科）の省力的モニタリングの可能性. 応動昆和文誌, 69巻, 4号. https://doi.org/10.1303/jjaez.2025.160  
 - 山野博哉, 小熊宏之, **岡本遼太郎**, 佐久間東陽, 高宮青空, 小嶋雅之, 粟賀仁也, 原田克人. (2025), 民間定期航空便を活用したサンゴ礁観測の可能性評価. 日本リモートセンシング学会誌, 45(1):36-41. https://doi.org/10.11440/rssj.45.36  
 - **Okamoto, R.** Oguma, H. (2025), A simulation based approach for enhancing automatic detection of cicada songs in challenging chorus conditions. Ecological Informatics, 90. https://doi.org/10.1016/j.ecoinf.2025.103299.
@@ -34,10 +35,11 @@ Ryotaro Okamoto
 - 竹内 やよい, 遠山 弘法, 吉川 徹朗, **岡本 遼太郎**, 井手 玲子, 角谷 拓, 小出 大, 西廣 淳, 小熊 宏之, 日浦 勉, 中静 透, 気候変動時代の生態学： 陸域生態系における「自然を基盤とした解決策」にむけた課題, 日本生態学会誌, 2022, 72 巻, 2 号, p. 109-, 公開日 2022/10/22, Online ISSN 2424-127X, Print ISSN 0021-5007, https://doi.org/10.18960/seitai.72.2_109, https://www.jstage.jst.go.jp/article/seitai/72/2/72_109/_article/-char/ja  
 
 ### Works
-- [山岳風景写真地理情報化パッケージ`alproj` (Python)](https://github.com/0kam/alproj)
-- [半教師あり物体検出パッケージ`vodet` (Python)](https://github.com/0kam/vodet)
-- [長期野外録音用マイクロフォンアレイ `ChirpArray`](https://github.com/0kam/ChirpArray)
-- [全天球タイムラプスカメラ `PiSphere`](https://github.com/0kam/PiSphere)
+- [山岳風景写真地理情報化パッケージ`alproj` (Python)](https://github.com/0kam/alproj)（[GUI版](https://github.com/0kam/alproj-gui)）  
+- [鳥類音響モニタリング用解析ソフト`echoroo-lite`](https://github.com/0kam/echoroo-litet)  
+- [長期野外録音用マイクロフォンアレイ `ChirpArray`](https://github.com/0kam/ChirpArray)  
+- [安価な積雪深ロガー `SnowGauge`](https://github.com/0kam/SnowGauge)  
+- [Perch v2.0を蒸留した高速な生物音響AI `kinglet`](https://github.com/0kam/kinglet)
 - [自然地理学特説Ⅱ 授業資料](https://0kam.net/PG2/)  
     - Rを用いてさまざまなリモセン手法を動かしながら学びます。  
     - 資料は[Quarto](https://quarto.org/)で作成しました。  
@@ -48,6 +50,7 @@ Ryotaro Okamoto
 - 2020年11月 雪氷研究大会@オンライン 口頭発表部門 学生最優秀発表賞
 - 2024年1月 つくばサイエンスアカデミー SATテクノロジー・ショーケース2024@つくば国際会議場 プレゼンテーション賞（若手特別賞）
 - 2024年11月 日本山の科学会秋季研究大会@大町山岳博物館 学生優秀発表賞
+- 2026年1月 つくばサイエンスアカデミー SATテクノロジー・ショーケース2026@つくば国際会議場 プレゼンテーション賞（若手特別賞）
 
 ### Contact me
 email: okamoto.ryotaro.suあっとまーくalumni.tsukuba.ac.jp
@@ -59,4 +62,5 @@ So we beat on, boats against the current, borne back ceaselessly into the past."
 *The Great Gatsby*  By F. Scott Fitzgerald
 
 ## Yet another blog
-[日々の記録や読書録](https://rain-wanderer.netlify.app/)
+[日々の記録や読書録](https://rain-wanderer.netlify.app/)  
+[株価の勉強を始めました](https://0kam.net/kabuka/)  
