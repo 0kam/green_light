@@ -36,10 +36,11 @@ Ryotaro Okamoto
 
 ### Works
 - [山岳風景写真地理情報化パッケージ`alproj` (Python)](https://github.com/0kam/alproj)（[GUI版](https://github.com/0kam/alproj-gui)）  
-- [鳥類音響モニタリング用解析ソフト`echoroo-lite`](https://github.com/0kam/echoroo-lite)  
+- [使いやすい鳥類音響モニタリング用解析ソフト`echoroo-lite`](https://github.com/0kam/echoroo-lite)  
 - [長期野外録音用マイクロフォンアレイ `ChirpArray`](https://github.com/0kam/ChirpArray)  
 - [安価な積雪深ロガー `SnowGauge`](https://github.com/0kam/SnowGauge)  
-- [Perch v2.0を蒸留した高速な生物音響AI `kinglet`](https://github.com/0kam/kinglet)
+- [Perch2.0を蒸留した高速な生物音響AI `kinglet`](https://github.com/0kam/kinglet)
+- [RaspberryPi pico2を使った安価な消費電力測定システム `picowatt`](https://github.com/0kam/picowatt)  
 - [自然地理学特説Ⅱ 授業資料](https://0kam.net/PG2/)  
     - Rを用いてさまざまなリモセン手法を動かしながら学びます。  
     - 資料は[Quarto](https://quarto.org/)で作成しました。  
